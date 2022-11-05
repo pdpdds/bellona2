@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <SccProjectName />
+    <SccLocalPath />
+    <ProjectGuid>{0AEC19EA-9D03-4C23-9DB0-43011567432D}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\Release\</OutDir>
+    <IntDir>.\Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\Debug\</OutDir>
+    <IntDir>.\Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalOptions> /vmg</AdditionalOptions>
+      <StringPooling>true</StringPooling>
+      <AdditionalIncludeDirectories>.\;.\h;.\h\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BELLONA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerOutput>AssemblyAndMachineCode</AssemblerOutput>
+      <AssemblerListingLocation>.\Release\</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>.\Release\Test.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>.\Release\</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release\</ProgramDataBaseFileName>
+      <StructMemberAlignment>1Byte</StructMemberAlignment>
+    </ClCompile>
+    <Midl>
+      <TypeLibraryName>.\Release\Test.tlb</TypeLibraryName>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Release\Test.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <OutputFile>Release/Bellona.bin</OutputFile>
+      <BaseAddress>0x400000</BaseAddress>
+      <EntryPointSymbol>bellona2_main</EntryPointSymbol>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <StringPooling>true</StringPooling>
+      <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
+      <AdditionalIncludeDirectories>.\;.\h;.\h\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <UndefineAllPreprocessorDefinitions>true</UndefineAllPreprocessorDefinitions>
+      <PreprocessorDefinitions>BELLONA2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerOutput>All</AssemblerOutput>
+      <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>.\Debug\Test.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>.\Debug\</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
+      <AdditionalOptions> /Yd </AdditionalOptions>
+      <StructMemberAlignment>1Byte</StructMemberAlignment>
+      <DisableSpecificWarnings>4091</DisableSpecificWarnings>
+      <SDLCheck>false</SDLCheck>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+    </ClCompile>
+    <PostBuildEvent>
+      <Command>copy debug\bellona2.lib lib\bellona2.lib /y
+
+stubv86\release\stubv86 debug\bellona2.mod v86lib\v86lib.bin
+
+if exist debug\bellona2.dbg del debug\bellona2.dbg /F /Q
+
+codemap\codemap debug\bellona2.map debug\bellona2.dbg
+
+copy debug\bellona2.mod disk\bellona2.mod/y
+
+copy debug\bellona2.dbg disk\bellona2.dbg/y</Command>
+    </PostBuildEvent>
+    <Midl>
+      <TypeLibraryName>.\Debug\Test.tlb</TypeLibraryName>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0412</Culture>
+      <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Debug\Test.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <OutputFile>debug/bellona2.mod</OutputFile>
+      <AdditionalOptions> /FIXED /FILEALIGN:4096</AdditionalOptions>
+      <BaseAddress>0x400000</BaseAddress>
+      <EntryPointSymbol>bellona2_main</EntryPointSymbol>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <SectionAlignment>4096</SectionAlignment>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="3c905b.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="bellona2.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="cdrom.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="chardev.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="Codetbl.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="cs.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="cursor.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="dbgreg.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="event.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="export.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="fdd.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="ffmt.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="fork.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="Gdt.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="hdd.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="init.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="int.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="kbd.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="kbddrv.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="kdebug.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="kgrxcall.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="kmesg.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="kprocess.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="kshell.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="kshlcmd.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="ksignal.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="ksyscall.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="Ldr.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="Lucifer.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="Malloc.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="memory.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="module.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="mouse.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="Myasm.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="mydbg2.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="nic.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="paging.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="pci.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="rsh_serv.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="schedule.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="semaph.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="serial.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="Stk.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="Symtbl.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="tss.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="tty.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="util.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="v86.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="vconsole.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="vesa.c">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"> /Yd   /Yd </AdditionalOptions>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="event.h" />
+    <ClInclude Include="gdt.h" />
+    <ClInclude Include="h\sctype.h" />
+    <ClInclude Include="kdebug.h" />
+    <ClInclude Include="kprocess.h" />
+    <ClInclude Include="kshlcmd.h" />
+    <ClInclude Include="paging.h" />
+    <ClInclude Include="Pefile.h" />
+    <ClInclude Include="tss.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="lib\asm.lib" />
+    <Library Include="lib\bell_fs.lib" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
