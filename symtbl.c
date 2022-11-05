@@ -1,0 +1,75 @@
+#include "bellona2.h"
+
+//#include "stdafx.h"
+//#include "myasm.h"
+//#include "codetbl.h"
+
+RsvSymStt rsvTbl[MAX_RSVSYM] = {
+    { "AH",     LT_REG8,		rAH     },
+    { "AL",     LT_REG8,		rAL     },
+    { "AX",     LT_REG16,       rAX     },
+    { "BH",     LT_REG8,		rBH     },
+    { "BL",     LT_REG8,		rBL     },
+    { "BP",     LT_REG16,       rBP     },
+    { "BX",     LT_REG16,       rBX     },
+    { "CH",     LT_REG8,		rCH     },
+    { "CL",     LT_REG8,		rCL     },
+    { "CR0",    LT_CTRLREG,     rC0     },
+    { "CR1",    LT_CTRLREG,     rC1     },
+    { "CR2",    LT_CTRLREG,     rC2     },
+    { "CR3",    LT_CTRLREG,     rC3     },
+    { "CR4",    LT_CTRLREG,     rC4     },
+    { "CR5",    LT_CTRLREG,     rC5     },
+    { "CR6",    LT_CTRLREG,     rC6     },
+    { "CR7",    LT_CTRLREG,     rC7     },
+    { "CS",     LT_SEGREG,      rCS     },
+    { "CX",     LT_REG16,       rCX     },
+    { "DH",     LT_REG8,		rDH     },
+    { "DI",     LT_REG16,       rDI     },
+    { "DL",     LT_REG8,		rDL     },
+    { "DR0",    LT_DBGREG,      rD0     },
+    { "DR1",    LT_DBGREG,      rD1     },
+    { "DR2",    LT_DBGREG,      rD2     },
+    { "DR3",    LT_DBGREG,      rD3     },
+    { "DR4",    LT_DBGREG,      rD4     },
+    { "DR5",    LT_DBGREG,      rD5     },
+    { "DR6",    LT_DBGREG,      rD6     },
+    { "DR7",    LT_DBGREG,      rD7     },
+    { "DS",     LT_SEGREG,      rDS     },
+    { "DX",     LT_REG16,       rDX     },
+    { "EAX",    LT_REG32,       rEAX    },
+    { "EBP",    LT_REG32,       rEBP    },
+    { "EBX",    LT_REG32,       rEBX    },
+    { "ECX",    LT_REG32,       rECX    },
+    { "EDI",    LT_REG32,       rEDI    },
+    { "EDX",    LT_REG32,       rEDX    },
+    { "ES",     LT_SEGREG,      rES     },
+    { "ESI",    LT_REG32,       rESI    },
+    { "ESP",    LT_REG32,       rESP    },
+    { "FS",     LT_SEGREG,      rFS     },
+    { "GS",     LT_SEGREG,      rGS     },
+    { "SI",     LT_REG16,       rSI     },
+    { "SP",     LT_REG16,       rSP     },
+    { "SS",     LT_SEGREG,      rSS     },
+    { "ST0",    LT_STKREG,      rST0    },
+    { "ST1",    LT_STKREG,      rST1    },
+    { "ST2",    LT_STKREG,      rST2    },
+    { "ST3",    LT_STKREG,      rST3    },
+    { "ST4",    LT_STKREG,      rST4    },
+    { "ST5",    LT_STKREG,      rST5    },
+    { "ST6",    LT_STKREG,      rST6    },
+    { "ST7",    LT_STKREG,      rST7    },
+    { "TR0",    LT_TESTREG,     rT0     },
+    { "TR1",    LT_TESTREG,     rT1     },
+    { "TR2",    LT_TESTREG,     rT2     },
+    { "TR3",    LT_TESTREG,     rT3     },
+    { "TR4",    LT_TESTREG,     rT4     },
+    { "TR5",    LT_TESTREG,     rT5     },
+    { "TR6",    LT_TESTREG,     rT6     },
+    { "TR7",    LT_TESTREG,     rT7     }
+};
+
+///////////////////////////////////////////
+///////////////////////////////////////////
+///////////////////////////////////////////
+

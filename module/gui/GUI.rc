@@ -1,0 +1,165 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+//#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Korean resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+#ifdef _WIN32
+//LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// BELLFONT
+//
+
+IDR_BF_BASE12           BELLFONT DISCARDABLE    "res\\base12.bfn"
+IDR_BF_BASE14           BELLFONT DISCARDABLE    "res\\base14.bfn"
+IDR_BF_SYS12            BELLFONT DISCARDABLE    "res\\sys12.bfn"
+IDR_BF_SYS14            BELLFONT DISCARDABLE    "res\\sys14.bfn"
+IDR_BF_BASE11           BELLFONT DISCARDABLE    "res\\base11.bfn"
+IDR_BF_SIMPLE9          BELLFONT DISCARDABLE    "res\\simple9.bfn"
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_CURSOR_BLUEPEN      CURSOR  DISCARDABLE     "res\\Millenium pen.cur"
+IDC_CURSOR_RS_V         CURSOR  DISCARDABLE     "res\\c_rs_v.cur"
+IDC_CURSOR_ARROW        CURSOR  DISCARDABLE     "res\\c_arrow.cur"
+IDC_CURSOR_RS_H         CURSOR  DISCARDABLE     "res\\c_rs_h.cur"
+IDC_CURSOR_RS_UL        CURSOR  DISCARDABLE     "res\\c_rs_ul.cur"
+IDC_CURSOR_RS_UR        CURSOR  DISCARDABLE     "res\\c_rs_ur.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_WALL_BLOCK          BITMAP  DISCARDABLE     "res\\wall-b1.bmp"
+IDB_B2K                 BITMAP  DISCARDABLE     "res\\b2k.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_EXIT                ICON    DISCARDABLE     "res\\Exit.ico"
+IDI_MAXIMIZE            ICON    DISCARDABLE     "res\\maximize.ico"
+IDI_MINIMIZE            ICON    DISCARDABLE     "res\\minimize.ico"
+IDI_ABOUT_ICON          ICON    DISCARDABLE     "res\\about.ico"
+IDI_MY_COM              ICON    DISCARDABLE     "res\\mycom.ico"
+IDI_KOREA               ICON    DISCARDABLE     "res\\korea.ico"
+IDI_CMD                 ICON    DISCARDABLE     "res\\cmd.ico"
+IDI_CMD_ICON            ICON    DISCARDABLE     "res\\cmd_icon.ico"
+IDI_MBOX                ICON    DISCARDABLE     "res\\mbox.ico"
+IDI_SYSINFO             ICON    DISCARDABLE     "res\\sysinfo.ico"
+IDI_APPS                ICON    DISCARDABLE     "res\\apps.ico"
+IDI_QUIT                ICON    DISCARDABLE     "res\\quit.ico"
+IDI_MORE                ICON    DISCARDABLE     "res\\more.ico"
+IDI_CLOCK               ICON    DISCARDABLE     "res\\clock.ico"
+IDI_TETRIS              ICON    DISCARDABLE     "res\\tetris.ico"
+IDI_MY_COM1             ICON    DISCARDABLE     "res\\my_com1.ico"
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041204b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "AKJIL\0"
+            VALUE "FileDescription", "GUI\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "GUI\0"
+            VALUE "LegalCopyright", "Copyright ¨Ï 2002\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "GUI.MOD\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "AKJIL GUI\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x412, 1200
+    END
+END
+
+#endif    // !_MAC
+
+#endif    // Korean resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,134 @@
+DWORD $$$$$_make_screen( WinStt *pWin );
+
+static DWORD wmh_$$$$$_create( WinStt *pWin, DWORD dwWMesgID, DWORD dwParamA, DWORD dwParamB )
+{
+	$$$$$PrivateStt	*pPrivate
+
+	//타이틀을 설정한다. 
+	set_window_title( pWin, "" );
+
+	// Win Private 영역을 할당한다. 
+	pPrivate = ($$$$$PrivateStt*)kmalloc( sizeof( $$$$$PrivateStt ) );
+	if( pPrivate != NULL )
+	{
+		memset( pPrivate, 0, sizeof( $$$$$PrivateStt ) );
+		//...
+	}
+
+	// 최초로 윈도우를 그려둔다.
+	$$$$$_make_screen( pWin );
+
+	return( WMHRV_CONTINUE );
+}
+
+static DWORD wmh_$$$$$_close( WinStt *pWin, DWORD dwWMesgID, DWORD dwParamA, DWORD dwParamB )
+{
+	$$$$$PrivateStt *pPrivate;
+
+	pPrivate = ($$$$$PrivateStt*)pWin->pPrivate;
+
+	// Win Private 영역을 해제한다. 
+	kfree( pWin->pPrivate );
+	pWin->pPrivate = NULL;
+	
+	// 스타일 윈도우의 핸들러(종료절차)를 수행하지 않고 그냥 종료한다.
+	// 결국 WM_CLOSE를 무시한다.
+	return( WMHRV_ABORT );
+}
+
+// $$$$$ window의 화면을 구성한다. (실제 보여지지는 않는다.)
+static DWORD $$$$$_make_screen( WinStt *pWin )
+{
+	RectStt			r;
+	ImageStt		*pImg;
+	int				nX, nY;   
+	$$$$$PrivateStt	*pPrivate;
+
+	// 클라이언트 영역을 지운다. 
+	screen_to_client( &r, pWin->gb.pR, &pWin->ct_r );
+	k_fill_rect( &pWin->gb, &r, $$$$$_BACK_COLOR );
+
+	return( 0 );
+}
+
+static DWORD wmh_$$$$$_paint( WinStt *pWin, DWORD dwWMesgID, DWORD dwParamA, DWORD dwParamB )
+{		
+	return( WMHRV_CONTINUE );
+}
+
+static DWORD wmh_$$$$$_lbtn_dn( WinStt *pWin, DWORD dwWMesgID, DWORD dwParamA, DWORD dwParamB )
+{
+	return( WMHRV_CONTINUE );
+}
+
+static DWORD wmh_$$$$$_lbtn_up( WinStt *pWin, DWORD dwWMesgID, DWORD dwParamA, DWORD dwParamB )
+{
+
+	return( WMHRV_CONTINUE );
+}
+
+static DWORD wmh_$$$$$_rbtn_dn( WinStt *pWin, DWORD dwWMesgID, DWORD dwParamA, DWORD dwParamB )
+{
+
+	return( WMHRV_CONTINUE );
+}
+
+static DWORD wmh_$$$$$_rbtn_up( WinStt *pWin, DWORD dwWMesgID, DWORD dwParamA, DWORD dwParamB )
+{
+
+	return( WMHRV_CONTINUE );
+}
+
+static DWORD wmh_$$$$$_mouse_move_out( WinStt *pWin, DWORD dwWMesgID, DWORD dwParamA, DWORD dwParamB )
+{
+	return( 0 );
+}	
+
+static DWORD wmh_$$$$$_mouse_move_in( WinStt *pWin, DWORD dwWMesgID, DWORD dwParamA, DWORD dwParamB )
+{
+	return( 0 );
+}	
+static DWORD wmh_$$$$$_mouse_move( WinStt *pWin, DWORD dwWMesgID, DWORD dwParamA, DWORD dwParamB )
+{
+	return( 0 );
+}				
+
+static DWORD wmh_$$$$$_minimize( WinStt *pWin, DWORD dwWMesgID, DWORD dwParamA, DWORD dwParamB )
+{
+	return( 0 );
+}
+
+static DWORD wmh_$$$$$_maximize( WinStt *pWin, DWORD dwWMesgID, DWORD dwParamA, DWORD dwParamB )
+{
+	return( 0 );
+}
+
+static DWORD wmh_$$$$$_win_move( WinStt *pWin, DWORD dwWMesgID, DWORD dwParamA, DWORD dwParamB )
+{
+	return( 0 );
+}
+
+static WMFuncStt $$$$$_marray[] = {
+	{ WMESG_CREATE		   , wmh_$$$$$_create			},
+	{ WMESG_CLOSE		   , wmh_$$$$$_close			},
+	{ WMESG_PAINT		   , wmh_$$$$$_paint			},
+	{ WMESG_LBTN_DN		   , wmh_$$$$$_lbtn_dn			},
+	{ WMESG_LBTN_UP		   , wmh_$$$$$_lbtn_up			},
+	{ WMESG_RBTN_DN		   , wmh_$$$$$_rbtn_dn			},
+	{ WMESG_RBTN_UP		   , wmh_$$$$$_rbtn_up			},
+	{ WMESG_MOUSE_MOVE_OUT , wmh_$$$$$_mouse_move_out	},									 
+	{ WMESG_MOUSE_MOVE_IN  , wmh_$$$$$_mouse_move_in	},
+	{ WMESG_MINIMIZE       , wmh_$$$$$_minimize			},
+	{ WMESG_MAXIMIZE       , wmh_$$$$$_maximize			},
+	{ WMESG_MOUSE_MOVE     , wmh_$$$$$_mouse_move		},
+	{ WMESG_WIN_MOVE       , wmh_$$$$$_win_move			},
+	{ 0, NULL }
+};
+
+// $$$$$ winow의 초기화 함수.
+int init_$$$$$_window( WinStt *pWin )
+{
+	pWin->pWMArray = $$$$$_marray;
+
+	return( 0 );
+}

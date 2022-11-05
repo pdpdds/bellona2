@@ -1,0 +1,7 @@
+#ifndef FONDED_GLOBAL_HEADER_20020517
+#define FONDED_GLOBAL_HEADER_20020517
+
+#define H_SIZE	400
+#define Y_SIZE	300
+
+#endif

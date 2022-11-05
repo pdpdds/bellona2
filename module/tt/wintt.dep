@@ -1,0 +1,41 @@
+# Microsoft Developer Studio Generated Dependency File, included by wintt.mak
+
+.\ChildView.cpp : \
+	".\ChildView.h"\
+	".\StdAfx.h"\
+	".\tt.h"\
+	"c:\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	
+
+.\MainFrm.cpp : \
+	".\ChildView.h"\
+	".\MainFrm.h"\
+	".\StdAfx.h"\
+	".\tetris.h"\
+	".\tt.h"\
+	"c:\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	
+
+.\StdAfx.cpp : \
+	".\StdAfx.h"\
+	"c:\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	
+
+.\tetris.c : \
+	".\tetris.h"\
+	"c:\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	
+
+.\tt.cpp : \
+	".\ChildView.h"\
+	".\MainFrm.h"\
+	".\StdAfx.h"\
+	".\tt.h"\
+	"c:\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	
+
+.\tt.rc : \
+	".\res\Toolbar.bmp"\
+	".\res\tt.ico"\
+	".\res\tt.rc2"\
+	

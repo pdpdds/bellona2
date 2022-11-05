@@ -1,0 +1,38 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: login - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\juhan\AppData\Local\Temp\RSP223D.tmp" with contents
+[
+/nologo /G4 /Zp1 /MLd /W3 /GX /Zi /Od /Gf /X /I "..\..\h" /I "..\..\h\common" /u /FAcs /Fa"Debug/" /Fo"Debug/" /Fd"Debug/" /FD /c 
+"C:\Users\juhan\Downloads\20040404_src\module\login\login.c"
+]
+Creating command line "cl.exe @C:\Users\juhan\AppData\Local\Temp\RSP223D.tmp" 
+Creating command line "link.exe /nologo /base:"0x80000000" /subsystem:console /pdb:none /map:"Debug/login.map" /machine:I386 /nodefaultlib /out:"Debug/login.exe" /FIXED:no  .\Debug\login.obj ..\..\lib\stdlib.lib ..\..\lib\startup.lib "
+<h3>Output Window</h3>
+Compiling...
+login.c
+Linking...
+Creating temporary file "C:\Users\juhan\AppData\Local\Temp\RSP2319.bat" with contents
+[
+@echo off
+..\..\disk\codemap debug\login.map debug\login.exe
+copy debug\login.exe ..\..\disk\login.exe /y
+]
+Creating command line "C:\Users\juhan\AppData\Local\Temp\RSP2319.bat"
+
+'..\..\disk\codemap'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는
+배치 파일이 아닙니다.
+        1개 파일이 복사되었습니다.
+
+
+
+<h3>Results</h3>
+login.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

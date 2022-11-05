@@ -1,0 +1,80 @@
+/*
+ * cache.[c,h]의 cache system은 file system based로 작성되어 cluster단위로 
+   caching이 이루어지게 되어 있다.
+ * 파일 시스템 입장에서는 cluster단위로 caching하는 것이 편하지만 
+   버퍼의 주소를 구해 필요한 데이터를 복사해 가고 저장하는 방식이라
+   interface가 자연스럽지 못하다.
+ * 만일 파일 시스템을 경유하지 않고 외부에서 직접 디바이스 드라이버에 액세스 
+   하면 dirty buffer의 일관성에 문제가 생길 수도 있다.
+ * 이상 2가지 문제점으로 인하여 block device 기준의 cache system을 새로 구현하기로 
+   하였다.
+   (2003-08-06)
+*/
+
+#ifndef BLOCK_DEVICE_CACHE_HEADER_jj
+#define BLOCK_DEVICE_CACHE_HEADER_jj
+
+// cache block type
+#define CBT_INVALID	0
+#define CBT_VALID	1	// valid
+#define CBT_ACCESS	2	// read
+#define CBT_DIRTY	4	// write
+
+struct VFSTag;
+struct BlkDevObjTag;
+struct CacheEntTag;
+
+typedef struct UsageTag {
+	int					nTotal;
+	struct CacheEntTag	*pStart, *pEnd;
+};
+typedef struct UsageTag UsageStt;
+
+// cache entry structure
+typedef struct CacheEntTag {
+	DWORD				dwBlock;			// 읽은 블록 번호
+	int					nBlocks;			// 현재 읽어들인 블록의 개수
+	DWORD				dwFlag;				// VALID, ACCESS, DIRTY...
+	char				*pBuff;				// 동적으로 할당한 버퍼
+	struct CacheEntTag	*pPre, *pNext;		// hash한 값이 같을 때 pre, next로 연결해서 관리한다.
+	struct CacheEntTag  *pUPre, *pUNext;	// usage link
+};
+typedef struct CacheEntTag CacheEntStt;
+
+// hash index stt
+typedef struct HashIndexTag {
+	int					nTotal;				// 동일한 값으로 해시된 것들의 개수.
+	CacheEntStt			*pStart, *pEnd;		// 동일한 값으로 해시된 것들을 위한 연결 리스트.
+};
+typedef struct HashIndexTag HashIndexStt;		  
+
+// cache manager struct
+typedef struct CacheManTag {
+	int					nMaxEntry;			// pHashTbl의 엔트리 개수
+	int					nTotalEntry;		// 현재 Cache되고 있는 클러스터
+	HashIndexStt		*pHashTbl;
+	UsageStt			dirty, access;		// dirty, access usage link
+};
+typedef struct CacheManTag CacheManStt;
+
+// 파일 시스템과 블록 디바이스 드라이버 사이에 캐시 레이어를 초기화하여 끼워넣는다.
+extern CacheManStt *alloc_cache_man( struct VFSTag *pVFS, int nMaxEntry );
+extern int free_cache_man( struct VFSTag *pVFS, CacheManStt *pCache );
+
+// Cache되고 있는 블록 버퍼의 주소를 구한다.
+extern CacheEntStt *cache_block( CacheManStt *pCacheMan, struct BlkDevObjTag *pDevObj, DWORD dwBlock,  int nBlocks );
+
+// 블록을 읽어들여 cache에 저장하고 버퍼 주소를 리턴한다.
+extern CacheEntStt *get_cached_block_address( CacheManStt *pCacheMan, struct BlkDevObjTag *pDevObj, DWORD dwBlock );
+
+// Cache를 통해 블록의 메모리 주소를 구한다.
+extern CacheEntStt *get_cache_entry( CacheManStt *pCacheMan, BlkDevObjStt *pDevObj, DWORD dwBlock, int nBlocks );
+
+// Dirty bit가 설정된 블록을 기록한다.
+extern int flush_cache( void *pVFS );
+
+// Cache Block의 Flag를 설정한다.
+extern void set_cahce_block_flag_access( CacheManStt *pCache, CacheEntStt *pCacheEnt );
+extern void set_cahce_block_flag_dirty( CacheManStt *pCache, CacheEntStt *pCacheEnt );
+
+#endif

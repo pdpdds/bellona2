@@ -1,0 +1,45 @@
+# Microsoft Developer Studio Generated Dependency File, included by ush.mak
+
+.\ush.c : \
+	"..\..\h\common\dirent.h"\
+	"..\..\h\common\env.h"\
+	"..\..\h\common\etc.h"\
+	"..\..\h\common\fileapi.h"\
+	"..\..\h\common\funckey.h"\
+	"..\..\h\common\uarea.h"\
+	"..\..\h\unistd.h"\
+	".\ush.h"\
+	
+
+.\ush_b2.c : \
+	"..\..\h\common\dirent.h"\
+	"..\..\h\common\env.h"\
+	"..\..\h\common\etc.h"\
+	"..\..\h\common\fileapi.h"\
+	"..\..\h\common\funckey.h"\
+	"..\..\h\common\uarea.h"\
+	"..\..\h\unistd.h"\
+	".\ush.h"\
+	
+
+.\ush_cmd.c : \
+	"..\..\h\common\dirent.h"\
+	"..\..\h\common\env.h"\
+	"..\..\h\common\etc.h"\
+	"..\..\h\common\fileapi.h"\
+	"..\..\h\common\funckey.h"\
+	"..\..\h\common\uarea.h"\
+	"..\..\h\unistd.h"\
+	".\ush.h"\
+	
+
+.\ush_main.c : \
+	"..\..\h\common\dirent.h"\
+	"..\..\h\common\env.h"\
+	"..\..\h\common\etc.h"\
+	"..\..\h\common\fileapi.h"\
+	"..\..\h\common\funckey.h"\
+	"..\..\h\common\uarea.h"\
+	"..\..\h\unistd.h"\
+	".\ush.h"\
+	

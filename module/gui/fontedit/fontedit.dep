@@ -1,0 +1,39 @@
+# Microsoft Developer Studio Generated Dependency File, included by FontEdit.mak
+
+.\FontEdit.cpp : \
+	".\FontEdit.h"\
+	".\FontEditDoc.h"\
+	".\FontEditView.h"\
+	".\MainFrm.h"\
+	".\StdAfx.h"\
+	
+
+.\FontEdit.rc : \
+	".\res\FontEdit.ico"\
+	".\res\FontEdit.rc2"\
+	".\res\FontEditDoc.ico"\
+	".\res\Toolbar.bmp"\
+	
+
+.\FontEditDoc.cpp : \
+	".\FontEdit.h"\
+	".\FontEditDoc.h"\
+	".\StdAfx.h"\
+	
+
+.\FontEditView.cpp : \
+	".\FontEdit.h"\
+	".\FontEditDoc.h"\
+	".\FontEditView.h"\
+	".\StdAfx.h"\
+	
+
+.\MainFrm.cpp : \
+	".\FontEdit.h"\
+	".\MainFrm.h"\
+	".\StdAfx.h"\
+	
+
+.\StdAfx.cpp : \
+	".\StdAfx.h"\
+	

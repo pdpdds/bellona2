@@ -1,0 +1,94 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: stdlib - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\juhan\AppData\Local\Temp\RSP26FD.tmp" with contents
+[
+/nologo /G4 /Zp1 /MLd /W3 /Zi /Od /Gf /X /I "..\.." /I "..\..\h" /I "..\..\h\common" /u /FAcs /Fa"Debug/" /Fo"Debug/" /Fd"Debug/" /FD /c 
+"C:\Users\juhan\Downloads\20040404_src\module\stdlib\conio.c"
+"C:\Users\juhan\Downloads\20040404_src\module\stdlib\env.c"
+"C:\Users\juhan\Downloads\20040404_src\ffmt.c"
+"C:\Users\juhan\Downloads\20040404_src\module\stdlib\fileapi.c"
+"C:\Users\juhan\Downloads\20040404_src\module\stdlib\ipc.c"
+"C:\Users\juhan\Downloads\20040404_src\module\stdlib\lib.c"
+"C:\Users\juhan\Downloads\20040404_src\module\stdlib\mem.c"
+"C:\Users\juhan\Downloads\20040404_src\module\stdlib\modcall.c"
+"C:\Users\juhan\Downloads\20040404_src\module\stdlib\proc.c"
+"C:\Users\juhan\Downloads\20040404_src\module\stdlib\signal.c"
+"C:\Users\juhan\Downloads\20040404_src\module\stdlib\stdio.c"
+"C:\Users\juhan\Downloads\20040404_src\module\stdlib\stdlib.c"
+"C:\Users\juhan\Downloads\20040404_src\module\stdlib\stdlib_main.c"
+"C:\Users\juhan\Downloads\20040404_src\module\stdlib\syscall.c"
+"C:\Users\juhan\Downloads\20040404_src\module\stdlib\uarea.c"
+"C:\Users\juhan\Downloads\20040404_src\util.c"
+]
+Creating command line "cl.exe @C:\Users\juhan\AppData\Local\Temp\RSP26FD.tmp" 
+Creating temporary file "C:\Users\juhan\AppData\Local\Temp\RSP26FE.tmp" with contents
+[
+/nologo /entry:"stdlib_main" /subsystem:console /pdb:none /map:"Debug/stdlib.map" /machine:I386 /nodefaultlib /out:"Debug/stdlib.mod" /FIXED:NO 
+.\Debug\conio.obj
+.\Debug\env.obj
+.\Debug\ffmt.obj
+.\Debug\fileapi.obj
+.\Debug\ipc.obj
+.\Debug\lib.obj
+.\Debug\mem.obj
+.\Debug\modcall.obj
+.\Debug\proc.obj
+.\Debug\signal.obj
+.\Debug\stdio.obj
+.\Debug\stdlib.obj
+.\Debug\stdlib_main.obj
+.\Debug\syscall.obj
+.\Debug\uarea.obj
+.\Debug\util.obj
+..\..\lib\bellona2.lib
+]
+Creating command line "link.exe @C:\Users\juhan\AppData\Local\Temp\RSP26FE.tmp"
+<h3>Output Window</h3>
+Compiling...
+conio.c
+env.c
+ffmt.c
+fileapi.c
+ipc.c
+lib.c
+mem.c
+modcall.c
+proc.c
+signal.c
+stdio.c
+stdlib.c
+stdlib_main.c
+syscall.c
+uarea.c
+util.c
+Generating Code...
+Linking...
+   Creating library Debug/stdlib.lib and object Debug/stdlib.exp
+Creating temporary file "C:\Users\juhan\AppData\Local\Temp\RSP2885.bat" with contents
+[
+@echo off
+..\..\disk\codemap debug\stdlib.map debug\stdlib.mod
+copy debug\stdlib.mod \..\..\disk
+copy debug\stdlib.lib ..\..\lib
+]
+Creating command line "C:\Users\juhan\AppData\Local\Temp\RSP2885.bat"
+
+'..\..\disk\codemap'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는
+배치 파일이 아닙니다.
+액세스가 거부되었습니다.
+        0개 파일이 복사되었습니다.
+        1개 파일이 복사되었습니다.
+
+
+
+<h3>Results</h3>
+stdlib.mod - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

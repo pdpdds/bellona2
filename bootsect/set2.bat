@@ -1,0 +1,1 @@
+debug boot2.bin <s2.scr

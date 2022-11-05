@@ -1,0 +1,116 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: GUI - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Debug/gui.res" /d "_DEBUG" "C:\Users\juhan\Downloads\20040404_src\module\gui\gui.rc"" 
+Creating temporary file "C:\Users\juhan\AppData\Local\Temp\RSP17FD.tmp" with contents
+[
+/nologo /G4 /Zp1 /MLd /W3 /Od /Gf /X /I "..\.." /I "..\..\h" /I "..\..\h\common" /u /FAcs /Fa"Debug/" /Fr"Debug/" /Fo"Debug/" /Fd"Debug/" /FD /c 
+"C:\Users\juhan\Downloads\20040404_src\module\gui\about.c"
+"C:\Users\juhan\Downloads\20040404_src\module\gui\bitmap.c"
+"C:\Users\juhan\Downloads\20040404_src\module\gui\button.c"
+"C:\Users\juhan\Downloads\20040404_src\module\gui\draw.c"
+"C:\Users\juhan\Downloads\20040404_src\module\gui\flatw.c"
+"C:\Users\juhan\Downloads\20040404_src\module\gui\font.c"
+"C:\Users\juhan\Downloads\20040404_src\module\gui\framew.c"
+"C:\Users\juhan\Downloads\20040404_src\module\gui\grxcall.c"
+"C:\Users\juhan\Downloads\20040404_src\module\gui\GUI.c"
+"C:\Users\juhan\Downloads\20040404_src\module\gui\guiexp.c"
+"C:\Users\juhan\Downloads\20040404_src\module\gui\iconwin.c"
+"C:\Users\juhan\Downloads\20040404_src\module\gui\kcmdwin.c"
+"C:\Users\juhan\Downloads\20040404_src\module\gui\mbox.c"
+"C:\Users\juhan\Downloads\20040404_src\module\gui\menu.c"
+"C:\Users\juhan\Downloads\20040404_src\module\gui\mpointer.c"
+"C:\Users\juhan\Downloads\20040404_src\module\gui\simplew.c"
+"C:\Users\juhan\Downloads\20040404_src\module\gui\syscolor.c"
+"C:\Users\juhan\Downloads\20040404_src\module\gui\taskbar.c"
+"C:\Users\juhan\Downloads\20040404_src\module\gui\wall.c"
+"C:\Users\juhan\Downloads\20040404_src\module\gui\win.c"
+"C:\Users\juhan\Downloads\20040404_src\module\gui\WinRes.c"
+]
+Creating command line "cl.exe @C:\Users\juhan\AppData\Local\Temp\RSP17FD.tmp" 
+Creating temporary file "C:\Users\juhan\AppData\Local\Temp\RSP17FE.tmp" with contents
+[
+/nologo /entry:"gui_main" /subsystem:console /pdb:none /map:"Debug/GUI.map" /machine:I386 /nodefaultlib /out:"Debug/GUI.MOD" /fixed:no 
+.\Debug\about.obj
+.\Debug\bitmap.obj
+.\Debug\button.obj
+.\Debug\draw.obj
+.\Debug\flatw.obj
+.\Debug\font.obj
+.\Debug\framew.obj
+.\Debug\grxcall.obj
+.\Debug\GUI.obj
+.\Debug\guiexp.obj
+.\Debug\iconwin.obj
+.\Debug\kcmdwin.obj
+.\Debug\mbox.obj
+.\Debug\menu.obj
+.\Debug\mpointer.obj
+.\Debug\simplew.obj
+.\Debug\syscolor.obj
+.\Debug\taskbar.obj
+.\Debug\wall.obj
+.\Debug\win.obj
+.\Debug\WinRes.obj
+.\Debug\gui.res
+..\..\lib\bellona2.lib
+]
+Creating command line "link.exe @C:\Users\juhan\AppData\Local\Temp\RSP17FE.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+about.c
+bitmap.c
+button.c
+draw.c
+flatw.c
+font.c
+framew.c
+grxcall.c
+GUI.c
+guiexp.c
+iconwin.c
+kcmdwin.c
+mbox.c
+menu.c
+mpointer.c
+simplew.c
+syscolor.c
+taskbar.c
+wall.c
+win.c
+Generating Code...
+C:\Users\juhan\Downloads\20040404_src\module\gui\GUI.c(231) : warning C4761: integral size mismatch in argument; conversion supplied
+Compiling...
+WinRes.c
+Generating Code...
+Linking...
+   Creating library Debug/GUI.lib and object Debug/GUI.exp
+Creating temporary file "C:\Users\juhan\AppData\Local\Temp\RSP1B0C.bat" with contents
+[
+@echo off
+copy debug\gui.mod debug\gui.exe
+..\..\disk\codemap debug\gui.map debug\gui.mod
+copy debug\gui.mod ..\..\disk\gui.mod /y
+copy debug\gui.lib ..\..\lib\gui.lib /y
+]
+Creating command line "C:\Users\juhan\AppData\Local\Temp\RSP1B0C.bat"
+
+        1개 파일이 복사되었습니다.
+'..\..\disk\codemap'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는
+배치 파일이 아닙니다.
+        1개 파일이 복사되었습니다.
+        1개 파일이 복사되었습니다.
+
+
+
+<h3>Results</h3>
+GUI.MOD - 0 error(s), 1 warning(s)
+</pre>
+</body>
+</html>

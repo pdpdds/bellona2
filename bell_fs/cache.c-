@@ -1,0 +1,486 @@
+#include "vfs.h"
+
+static int nDeleteAccessEnt( CacheManStt *pCache, CacheEntStt *pCacheEnt );
+
+// 파일 시스템과 블록 디바이스 드라이버 사이에 Cache 레이어를 초기화하여 끼워넣는다.
+CacheManStt *alloc_cache_man( VFSStt *pVFS, int nMaxEntry )
+{
+	CacheManStt		*pCache;
+	HashIndexStt	*pHashTbl;
+	
+	// Hash Man 구조체를 할당한다.
+	pCache = (CacheManStt*)MALLOC( sizeof( CacheManStt ) );
+	if( pCache == NULL )
+		return( NULL );	
+	
+	// Hash Table을 할당한다.
+	pHashTbl = (HashIndexStt*)MALLOC( sizeof( HashIndexStt ) * nMaxEntry );
+	if( pHashTbl == NULL )
+	{
+		FREE( pCache );
+		return( NULL );
+	}
+
+	// clear hash index table
+	memset( pHashTbl, 0, sizeof( HashIndexStt ) * nMaxEntry );
+		
+	// Cache Manager를 만들어준다.
+	memset( pCache, 0, sizeof( CacheManStt ) );
+	pCache->nMaxEntry = nMaxEntry;
+	pCache->pHashTbl  = pHashTbl;
+
+	return( pCache );
+}							
+
+// free cache entry chain
+static int free_cache_ent( CacheEntStt *pEnt )
+{
+	CacheEntStt *pNext;
+
+	for( ; pEnt != NULL; pEnt = pNext )
+	{
+		FREE( pEnt->pBuff );
+		pNext = pEnt->pNext;
+		FREE( pEnt );
+	}
+								
+	return( 0 );
+}
+
+// free cache manager hash table, cache entries
+int free_cache_man( struct VFSTag *pVFS, CacheManStt *pCache )
+{
+	int				nI;
+	HashIndexStt	*pHashTbl;
+	CacheEntStt		*pCacheEnt;
+
+	pHashTbl = pCache->pHashTbl;
+	for( nI = 0; nI < pCache->nMaxEntry; nI++ )
+	{
+		if( pHashTbl[nI].nTotal > 0 && pHashTbl[nI].pStart != NULL )
+		{	// free cache entry chain
+			pCacheEnt = pHashTbl[nI].pStart;
+			free_cache_ent( pCacheEnt );
+		}
+	}
+
+	FREE( pHashTbl );
+	FREE( pCache );
+
+	pVFS->pCache = NULL;
+
+	return( 0 );
+}
+											
+// Cache된 블록 버퍼의 주소를 구한다.
+CacheEntStt *get_cached_block_address( CacheManStt *pCache, BlkDevObjStt *pDevObj, DWORD dwBlock )
+{
+	DWORD		dwKey;
+	CacheEntStt	*pCacheEnt;
+
+	dwKey = (DWORD)( dwBlock % (DWORD)pCache->nMaxEntry );
+	
+	// Cache에서 찾아보고 못찾았을 경우 NULL을 리턴한다.
+	for( pCacheEnt = pCache->pHashTbl[dwKey].pStart; pCacheEnt != NULL; pCacheEnt = pCacheEnt->pNext )
+	{
+		if( pCacheEnt->dwBlock == dwBlock )
+			return( pCacheEnt );
+	}								   
+
+	return( NULL );
+}
+
+// find pEnt in pCache link
+static CacheEntStt *FIND_HASH_ENT( HashIndexStt *pHash, CacheEntStt *pEnt )
+{
+	int			nI;
+	CacheEntStt *pT;
+
+	pT = pHash->pStart;
+	for( nI = 0; nI < pHash->nTotal && pT != NULL; nI++ )
+	{
+		if( pT == pEnt )
+			return( pT );
+		
+		pT = pT->pNext;
+	}
+	
+	return( NULL );
+}
+
+// Cache Entry를 끼워넣는다.
+static int nInsertHashEnt( CacheManStt *pCache, CacheEntStt *pCacheEnt )
+{
+	CacheEntStt		*pT;
+	DWORD			dwKey;
+	HashIndexStt	*pHashIndex;
+
+	dwKey      = (DWORD)( pCacheEnt->dwBlock % (DWORD)pCache->nMaxEntry );
+	pHashIndex = &pCache->pHashTbl[dwKey];
+
+	// find pCacheEnt in pCache link
+	pT = FIND_HASH_ENT( pHashIndex, pCacheEnt );
+	if( pT != NULL )
+	{
+		ERROR_PRINTF( "nInsertHashEnt() - entry is already inserted.\n" );
+		return( -1 );
+	}
+
+	pCache->nTotalEntry++;
+	pHashIndex->nTotal++;
+
+	// 엔트리가 하나도 없다.
+	if( pHashIndex->pStart == NULL )
+	{
+		pHashIndex->pStart = pHashIndex->pEnd = pCacheEnt;
+		pCacheEnt->pPre = pCacheEnt->pNext = NULL;
+	}
+	else
+	{	// 링크의 가장 뒤쪽에 끼워넣는다.
+		pCacheEnt->pPre = pHashIndex->pEnd;
+		pCacheEnt->pNext = NULL;
+		pHashIndex->pEnd->pNext = pCacheEnt;
+		pHashIndex->pEnd = pCacheEnt;
+	}
+
+	return( 0 );
+}
+
+// Cache Entry를 Hash Index에서만 잘라낸다.
+static int nDeleteHashEnt( CacheManStt *pCache, CacheEntStt *pCacheEnt )
+{
+	CacheEntStt		*pT;
+	DWORD			dwKey;
+	HashIndexStt	*pHashIndex;
+
+	dwKey      = (DWORD)( pCacheEnt->dwBlock % (DWORD)pCache->nMaxEntry );
+	pHashIndex = &pCache->pHashTbl[dwKey];
+
+	// find pCacheEnt in pCache link
+	pT = FIND_HASH_ENT( pHashIndex, pCacheEnt );
+	if( pT == NULL )
+	{
+		ERROR_PRINTF( "nDeleteHashEnt() - entry not found.\n" );
+		return( -1 );
+	}
+
+	// Cache Entry가 HashIndex.pStart에 연결된 경우
+	if( pCacheEnt->pPre != NULL )
+		pCacheEnt->pPre->pNext = pCacheEnt->pNext;
+	else
+		pHashIndex->pStart = pCacheEnt->pNext;
+
+	if( pCacheEnt->pNext != NULL )
+		pCacheEnt->pNext->pPre = pCacheEnt->pPre;
+	else
+		pHashIndex->pEnd = pCacheEnt->pPre;
+
+	pCache->nTotalEntry--;
+	pHashIndex->nTotal--;
+
+	// pre, next만 NULL로 하고 pBuff와 기타의 것들은 변경하지 않는다.
+	pCacheEnt->pPre = pCacheEnt->pNext = NULL;
+
+	return( 0 );
+}
+
+// dwBlock 블록을 nBlocks 개수만큼 읽어들여 cache에 저장하고 버퍼 주소를 리턴한다.
+CacheEntStt *cache_block( CacheManStt *pCache, BlkDevObjStt *pDevObj, DWORD dwBlock, int nBlocks )
+{
+	int				nI, nR;
+	char			*pBuff;
+	UsageStt		*pU;
+	CacheEntStt		*pCacheEnt;
+
+	// Cache가 꽉찼으므로 가장 오래된 것을 비워야 한다.
+	if( pCache->nTotalEntry >= pCache->nMaxEntry )
+	{	// CBT_ACCESS의 가장 오래된 CacheEnt를 잘라낸다.
+		pU = &pCache->access;
+		if( pU->nTotal > 0 )
+		{
+			pCacheEnt = pU->pStart;
+			// link를 끊는다.
+			nDeleteAccessEnt( pCache, pCacheEnt );
+			nDeleteHashEnt( pCache, pCacheEnt );
+			
+			// 버퍼를 해제한다.  (버퍼는 크기가 다를 수 있으므로 그냥 사용할 수 없다.)
+			FREE( pCacheEnt->pBuff );
+			goto ALLOC_BUFF;
+		}
+
+		// CBT_ACCESS가 부족하면 CBT_DIRTY를 write하고 비워야 한다.
+		//pU = &pCache->dirty;
+		// ^^;
+
+
+
+			
+		return( NULL );
+	}	
+
+	// allocate Cache Entry 
+	pCacheEnt = (CacheEntStt*)MALLOC( sizeof( CacheEntStt ) );
+	if( pCacheEnt == NULL )
+		return( NULL );
+
+ALLOC_BUFF:
+	// allocate block buffer
+	pBuff = (char*)MALLOC( pDevObj->pDev->nBlkSize * nBlocks );
+
+	if( pBuff == NULL )
+	{
+		FREE( pCacheEnt );
+		return( NULL );
+	}	
+
+	// read data blocks
+	for( nI = 0; nI < nBlocks; nI++ )
+	{
+		nR = read_block( pDevObj, dwBlock + (DWORD)nI, &pBuff[ pDevObj->pDev->nBlkSize * nI ], 1 );
+		if( nR == -1 )
+		{	
+			FREE( pCacheEnt );
+			FREE( pBuff );
+			return( NULL );
+		}
+	}	
+
+	memset( pCacheEnt, 0, sizeof( CacheEntStt ) );
+	pCacheEnt->pBuff   = pBuff;
+	pCacheEnt->nBlocks = nBlocks;
+	pCacheEnt->dwBlock = dwBlock;
+	pCacheEnt->dwFlag  = CBT_VALID;		// initialize cache block flag by CBT_VALID
+	
+	// link cache entry
+	nInsertHashEnt( pCache, pCacheEnt );
+	set_cahce_block_flag_access( pCache, pCacheEnt );
+
+	return( pCacheEnt );
+}
+
+// Cache를 통해 블록의 메모리 주소를 구한다.
+CacheEntStt *get_cache_entry( CacheManStt *pCache, BlkDevObjStt *pDevObj, DWORD dwBlock, int nBlocks )
+{
+	CacheEntStt	*pCacheEnt;
+					
+	// Cache되고 있는 블록 버퍼의 주소를 구한다.
+	pCacheEnt = get_cached_block_address( pCache, pDevObj, dwBlock );
+	if( pCacheEnt == NULL )
+	{	// Cache에서 찾을 수 없으면 블록을 읽어들이고 cache하도록 한다.
+		pCacheEnt = cache_block( pCache, pDevObj, dwBlock, nBlocks );
+		if( pCacheEnt == NULL )
+			return( NULL );				// reading block failed!
+	}
+
+	return( pCacheEnt );
+}
+
+static CacheEntStt *FIND_USAGE_ENT( UsageStt *pU, CacheEntStt *pEnt )
+{
+	int			nI;
+	CacheEntStt *pT;
+
+	pT = pU->pStart;
+	for( nI = 0; nI < pU->nTotal && pT != NULL; nI++ )
+	{
+		if( pEnt == pT )
+			return( pT );
+
+		pT = pT->pUNext;
+
+	}
+
+	return( NULL );
+}
+
+static int nInsertUsageEnt( UsageStt *pU, CacheEntStt *pCacheEnt )
+{
+	CacheEntStt *pT;
+
+	pT = FIND_USAGE_ENT( pU, pCacheEnt );
+	if( pT != NULL )
+	{
+		ERROR_PRINTF( "nInsertUsageEnt() - entry is already inserted.\n" );
+		return( -1 );
+	}
+
+	if( pU->pStart == NULL )
+	{
+		pU->pStart = pU->pEnd = pCacheEnt;
+		pCacheEnt->pUPre = pCacheEnt->pUNext = NULL;
+	}
+	else
+	{
+		pU->pEnd->pUNext = pCacheEnt;
+		pCacheEnt->pUPre = pU->pEnd;
+		pU->pEnd = pCacheEnt;
+		pCacheEnt->pUNext = NULL;
+	}
+
+	pU->nTotal++;	
+	
+	return( 0 );
+}
+
+static int nDeleteUsageEnt( UsageStt *pU, CacheEntStt *pCacheEnt )
+{	
+	CacheEntStt *pT;
+
+	pT = FIND_USAGE_ENT( pU, pCacheEnt );
+	if( pT == NULL )
+	{
+		ERROR_PRINTF( "nInsertUsageEnt() - entry not found.\n" );
+		return( -1 );
+	}
+
+	if( pCacheEnt->pUPre != NULL )
+		pCacheEnt->pUPre->pUNext = pCacheEnt->pUNext;
+	else
+		pU->pStart = pCacheEnt->pUNext;
+
+	if( pCacheEnt->pUNext != NULL )
+		pCacheEnt->pUNext->pUPre = pCacheEnt->pUPre;
+	else
+		pU->pEnd = pCacheEnt->pUPre;
+
+	pCacheEnt->pUPre = pCacheEnt->pUNext = NULL;
+
+	pU->nTotal--;	
+	
+	return( 0 );
+}
+
+static int nInsertAccessEnt( CacheManStt *pCache, CacheEntStt *pCacheEnt )
+{
+	int			nR;
+	UsageStt	*pU;
+	
+	pU = &pCache->access;
+	nR = nInsertUsageEnt( pU, pCacheEnt );
+	
+	return( nR );
+}
+
+static int nDeleteAccessEnt( CacheManStt *pCache, CacheEntStt *pCacheEnt )
+{
+	int			nR;
+	UsageStt	*pU;
+
+	pU = &pCache->access;
+	nR = nDeleteUsageEnt( pU, pCacheEnt );
+	
+	return( nR );
+}
+
+static int nInsertDirtyEnt( CacheManStt *pCache, CacheEntStt *pCacheEnt )
+{
+	int			nR;
+	UsageStt	*pU;
+
+	pU = &pCache->dirty;
+	nR = nInsertUsageEnt( pU, pCacheEnt );
+	
+	return( nR );
+}
+
+static int nDeleteDirtyEnt( CacheManStt *pCache, CacheEntStt *pCacheEnt )
+{
+	int			nR;
+	UsageStt	*pU;
+
+	pU = &pCache->dirty;
+	nR = nDeleteUsageEnt( pU, pCacheEnt );
+	
+	return( nR );
+}
+
+// Cache Block의 Flag를 ACCESS로 설정한다.
+void set_cahce_block_flag_access( CacheManStt *pCache, CacheEntStt *pCacheEnt )
+{
+	int nR;
+
+	if( pCacheEnt->dwFlag == CBT_ACCESS )
+		return;
+
+	if( pCacheEnt->dwFlag == CBT_DIRTY )
+		nR = nDeleteDirtyEnt( pCache, pCacheEnt );
+	
+	nR = nInsertAccessEnt( pCache, pCacheEnt );
+	
+	pCacheEnt->dwFlag = (DWORD)CBT_ACCESS;
+}
+
+// Cache Block의 Flag를 DIRTY로 설정한다.
+void set_cahce_block_flag_dirty( CacheManStt *pCache, CacheEntStt *pCacheEnt )
+{
+	int nR;
+
+	if( pCacheEnt->dwFlag == CBT_DIRTY )
+		return;
+
+	if( pCacheEnt->dwFlag == CBT_ACCESS )
+		nR = nDeleteAccessEnt( pCache, pCacheEnt );
+	
+	nR = nInsertDirtyEnt( pCache, pCacheEnt );
+	
+	pCacheEnt->dwFlag = (DWORD)CBT_DIRTY;
+}
+
+// flush a cache entry
+static int flush_cache_ent( VFSStt *pVFS, CacheEntStt *pEnt )
+{
+	int				nR;
+	BlkDevIOStt		bio;
+	BlkDevStt		*pDev;
+
+	pDev = pVFS->pDevObj->pDev;
+
+	// set block device io structure
+	memset( &bio, 0, sizeof( bio ) );
+	bio.dwIndex = pEnt->dwBlock;
+	bio.nBlocks = pEnt->nBlocks;
+	bio.pBuff   = pEnt->pBuff;
+
+	// call write function of block device
+	if( pDev->op.write != NULL )
+		nR = pDev->op.write( pVFS->pDevObj, &bio );
+	else
+		nR = -1;
+		 
+	return( nR );
+}
+
+// Dirty Bit가 설정되어 있는 블록을 기록한다.
+int flush_cache( void *pVoidVFS )
+{
+	int			nI;
+	UsageStt	*pU;
+	VFSStt		*pVFS;
+	CacheEntStt	*pEnt;
+	CacheManStt *pCacheMan;
+
+	pVFS		= (VFSStt*)pVoidVFS;
+	pCacheMan	= pVFS->pCache;
+	pU			= &pCacheMan->dirty;
+
+	pEnt = pU->pStart;
+	for( nI = 0; nI < pU->nTotal && pEnt != NULL; nI++ )
+	{	// flush
+		flush_cache_ent( pVFS, pEnt );
+		pEnt = pEnt->pUNext;
+
+		// dirty -> access
+		set_cahce_block_flag_access( pCacheMan, pEnt );
+	}
+
+	return( 0 );
+}
+
+
+
+
+
+
+
+
+

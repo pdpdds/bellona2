@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{e82d565a-d336-4d0f-a1ea-98a0050054b0}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{e4653c47-e094-469d-aa39-dcb786d7a8e7}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{28617b46-04c7-4439-a65a-63544f056878}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="about.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bitmap.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="button.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="draw.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="flatw.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="font.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="framew.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="grxcall.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="guiexp.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="iconwin.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="kcmdwin.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mbox.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="menu.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mpointer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="simplew.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="syscolor.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="taskbar.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="wall.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="win.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WinRes.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="gui.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="button.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="draw.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gui.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="guiobj.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kcmdwin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="wall.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="win.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\about.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\apps.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\b2k.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\clock.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\cmd.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\cmd_icon.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Exit.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\icon1.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\icon2.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\korea.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\logo8.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\maximize.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\mbox.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\minimize.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\more.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\my_com.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\my_com1.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\mycom.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\quit.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\sysinfo.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\tetris.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\wall-b1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\WALL0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Wall1.BMP">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Wall2.BMP">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="res\arrow_il.cur">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="res\c_arrow.cur">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="res\c_rs_h.cur">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="res\c_rs_ul.cur">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="res\c_rs_ur.cur">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="res\c_rs_v.cur">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="res\Millenium pen.cur">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="res\base11.bfn" />
+    <CustomBuild Include="base12.bfn" />
+    <CustomBuild Include="res\base12.bfn" />
+    <CustomBuild Include="base14.bfn" />
+    <CustomBuild Include="res\base14.bfn" />
+    <CustomBuild Include="res\gulim11.bfn" />
+    <CustomBuild Include="res\simple9.bfn" />
+    <CustomBuild Include="res\sys12.bfn" />
+    <CustomBuild Include="sys12.bfn" />
+    <CustomBuild Include="res\sys14.bfn" />
+    <CustomBuild Include="sys14.bfn" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\lib\bellona2.lib" />
+  </ItemGroup>
+</Project>

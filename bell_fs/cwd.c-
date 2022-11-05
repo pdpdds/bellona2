@@ -1,0 +1,136 @@
+#include "vfs.h"
+
+#ifdef WIN32TEST
+static CWDStt	cwd;
+#endif
+
+// 현재 프로세스의 CWD 구조체의 포인터를 얻는다.
+static CWDStt *get_current_thread_cwd()
+{
+	CWDStt *pCWD;
+
+#ifdef WIN32TEST
+	pCWD = &cwd;
+#endif			
+#ifdef BELLONA2
+	extern CWDStt *get_cur_thread_cwd();
+	pCWD = get_cur_thread_cwd();			// process.c
+#endif
+	
+	return( pCWD );
+}
+
+// 현재 디렉토리 경로를 알아낸다.
+char *get_cwd_str( CWDStt *pCWD, char *pRetStr )
+{
+	strcpy( pRetStr, pCWD->szStr );
+
+	return( pRetStr );
+}		 
+
+// change directory
+int change_directory( char *pDir )
+{
+	char	szT[260];
+	int		nR, nHandle;
+	CWDStt  *pCWD;
+
+	pCWD = get_current_thread_cwd();
+	if( pCWD == NULL )
+		return( -1 );
+
+	//  open target directory
+	nHandle = kopendir( pDir );
+	if( nHandle < 0 )
+	{
+		ERROR_PRINTF( "change_directory() - %s : open error\n", pDir );
+		return( -1 );
+	}
+	// get target fullpath
+	nR = get_handle_fullpath( nHandle, szT );
+	if( nR < 0 )
+	{
+		ERROR_PRINTF( "change_directory() - get_handle_fullpath function returned an error!\n" );
+		return( -1 );
+	}
+
+	// close previous current directory
+	if( pCWD->nDirHandle >= 0 )
+	{
+		nR = kclosedir( pCWD->nDirHandle );
+		if( nR <0 )
+		{
+			ERROR_PRINTF( "closing previous current directory failed!\n" );
+			kclosedir( nHandle );	// close target directory and abort
+			return( -1 );				
+		}
+	}
+							   
+	// set target directory handle and name
+	pCWD->nDirHandle = nHandle;
+	
+	strcpy( pCWD->szStr, szT );
+
+	return( 0 );
+}
+
+// initialize cwd
+int	init_cwd( char *pDir )
+{
+	int		nR;
+	CWDStt	*pCWD;
+
+	pCWD = get_current_thread_cwd();
+	if( pCWD == NULL )
+		return( -1 );
+
+	memset( pCWD, 0, sizeof( CWDStt ) );
+	pCWD->nDirHandle = -1;
+
+	nR = change_directory( pDir );
+
+	return( nR );
+}
+
+// close cwd
+int	close_cwd()
+{
+	int		nR;
+	CWDStt	*pCWD ;
+
+	pCWD = get_current_thread_cwd();
+	if( pCWD == NULL )
+		return( -1 );
+
+	if( pCWD->nDirHandle != -1 )
+	{
+		nR = kclosedir( pCWD->nDirHandle );
+		if( nR < 0 )
+		{
+			ERROR_PRINTF( "close_cwd() - close_directory function returned an error!\n" );
+			return( -1 );
+		}
+
+		pCWD->nDirHandle = -1;
+		return( 0 );
+	}
+	
+	return( -1 );
+}
+
+static char *pEmpty = "";
+// get current directory string
+char *get_current_directory( char *pStr )
+{
+	CWDStt *pCWD;
+
+	pStr[0] = 0;
+
+	pCWD = get_current_thread_cwd();
+	if( pCWD == NULL )
+		return( pEmpty );
+
+	strcpy( pStr, pCWD->szStr );
+
+	return( pStr );
+}

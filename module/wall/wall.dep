@@ -1,0 +1,6 @@
+# Microsoft Developer Studio Generated Dependency File, included by wall.mak
+
+.\wall.c : \
+	"..\..\h\common\fileapi.h"\
+	"..\..\h\grx.h"\
+	

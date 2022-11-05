@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <SccProjectName />
+    <SccLocalPath />
+    <ProjectGuid>{FE67012B-1383-47CB-B1E0-E98CFB56DE9A}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\Release\</OutDir>
+    <IntDir>.\Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\Debug\</OutDir>
+    <IntDir>.\Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <StringPooling>true</StringPooling>
+      <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
+      <AdditionalIncludeDirectories>\oh\test;\oh\test\h;\oh\test\h\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <UndefineAllPreprocessorDefinitions>true</UndefineAllPreprocessorDefinitions>
+      <AssemblerOutput>All</AssemblerOutput>
+      <AssemblerListingLocation>.\Release\</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>.\Release\GUI.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader />
+      <ObjectFileName>.\Release\</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release\</ProgramDataBaseFileName>
+      <StructMemberAlignment>1Byte</StructMemberAlignment>
+    </ClCompile>
+    <Midl>
+      <TypeLibraryName>.\Release\GUI.tlb</TypeLibraryName>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0412</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Release\GUI.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <SubSystem>Console</SubSystem>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <OutputFile>.\Release\GUI.exe</OutputFile>
+      <EntryPointSymbol>gui_main</EntryPointSymbol>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <StringPooling>true</StringPooling>
+      <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
+      <AdditionalIncludeDirectories>..\..;..\..\h;..\..\h\common</AdditionalIncludeDirectories>
+      <UndefineAllPreprocessorDefinitions>true</UndefineAllPreprocessorDefinitions>
+      <AssemblerOutput>All</AssemblerOutput>
+      <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>
+      <BrowseInformation>true</BrowseInformation>
+      <PrecompiledHeaderOutputFile>.\Debug\GUI.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>.\Debug\</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
+      <StructMemberAlignment>1Byte</StructMemberAlignment>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>DLLEXPORT</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4091</DisableSpecificWarnings>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+    </ClCompile>
+    <PostBuildEvent>
+      <Command>copy debug\gui.mod debug\gui.exe
+
+..\..\codemap\codemap debug\gui.map debug\gui.mod
+
+copy debug\gui.mod ..\..\disk\gui.mod /y
+
+copy debug\gui.lib ..\..\lib\gui.lib /y</Command>
+    </PostBuildEvent>
+    <Midl>
+      <TypeLibraryName>.\Debug\GUI.tlb</TypeLibraryName>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Debug\GUI.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <OutputFile>Debug/GUI.MOD</OutputFile>
+      <AdditionalOptions> /FIXED:NO  /FILEALIGN:4096</AdditionalOptions>
+      <EntryPointSymbol>gui_main</EntryPointSymbol>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <SectionAlignment>4096</SectionAlignment>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <AdditionalDependencies />
+      <DataExecutionPrevention>false</DataExecutionPrevention>
+      <BaseAddress>
+      </BaseAddress>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="about.c" />
+    <ClCompile Include="bitmap.c" />
+    <ClCompile Include="button.c" />
+    <ClCompile Include="draw.c" />
+    <ClCompile Include="flatw.c" />
+    <ClCompile Include="font.c" />
+    <ClCompile Include="framew.c" />
+    <ClCompile Include="grxcall.c" />
+    <ClCompile Include="GUI.c" />
+    <ClCompile Include="guiexp.c" />
+    <ClCompile Include="iconwin.c" />
+    <ClCompile Include="kcmdwin.c" />
+    <ClCompile Include="mbox.c" />
+    <ClCompile Include="menu.c" />
+    <ClCompile Include="mpointer.c" />
+    <ClCompile Include="simplew.c" />
+    <ClCompile Include="syscolor.c" />
+    <ClCompile Include="taskbar.c" />
+    <ClCompile Include="wall.c" />
+    <ClCompile Include="win.c" />
+    <ClCompile Include="WinRes.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="gui.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="button.h" />
+    <ClInclude Include="draw.h" />
+    <ClInclude Include="gui.h" />
+    <ClInclude Include="guiobj.h" />
+    <ClInclude Include="kcmdwin.h" />
+    <ClInclude Include="wall.h" />
+    <ClInclude Include="win.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\about.ico" />
+    <Image Include="res\apps.ico" />
+    <Image Include="res\b2k.bmp" />
+    <Image Include="res\clock.ico" />
+    <Image Include="res\cmd.ico" />
+    <Image Include="res\cmd_icon.ico" />
+    <Image Include="res\Exit.ico" />
+    <Image Include="res\icon1.ico" />
+    <Image Include="res\icon2.ico" />
+    <Image Include="res\korea.ico" />
+    <Image Include="res\logo8.bmp" />
+    <Image Include="res\maximize.ico" />
+    <Image Include="res\mbox.ico" />
+    <Image Include="res\minimize.ico" />
+    <Image Include="res\more.ico" />
+    <Image Include="res\mycom.ico" />
+    <Image Include="res\my_com.ico" />
+    <Image Include="res\my_com1.ico" />
+    <Image Include="res\quit.ico" />
+    <Image Include="res\sysinfo.ico" />
+    <Image Include="res\tetris.ico" />
+    <Image Include="res\wall-b1.bmp" />
+    <Image Include="res\WALL0.bmp" />
+    <Image Include="res\Wall1.BMP" />
+    <Image Include="res\Wall2.BMP" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="base12.bfn" />
+    <CustomBuild Include="base14.bfn" />
+    <CustomBuild Include="res\arrow_il.cur" />
+    <CustomBuild Include="res\base11.bfn" />
+    <CustomBuild Include="res\base12.bfn" />
+    <CustomBuild Include="res\base14.bfn" />
+    <CustomBuild Include="res\c_arrow.cur" />
+    <CustomBuild Include="res\c_rs_h.cur" />
+    <CustomBuild Include="res\c_rs_ul.cur" />
+    <CustomBuild Include="res\c_rs_ur.cur" />
+    <CustomBuild Include="res\c_rs_v.cur" />
+    <CustomBuild Include="res\gulim11.bfn" />
+    <CustomBuild Include="res\Millenium pen.cur" />
+    <CustomBuild Include="res\simple9.bfn" />
+    <CustomBuild Include="res\sys12.bfn" />
+    <CustomBuild Include="res\sys14.bfn" />
+    <CustomBuild Include="sys12.bfn" />
+    <CustomBuild Include="sys14.bfn" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\lib\bellona2.lib" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

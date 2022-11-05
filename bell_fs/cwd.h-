@@ -1,0 +1,28 @@
+#ifndef CWD_HEADER_jj
+#define CWD_HEADER_jj
+
+typedef struct CWDTag {
+	char	szStr[260];			// 현재 디렉토리의 스트링
+	int		nDirHandle;			// 현재 디렉토리의 핸들
+};
+typedef struct CWDTag CWDStt;
+
+// initialize cwd
+extern int init_cwd( char *pDir );
+
+// 디렉토리를 변경한다.
+extern int change_directory( char *pDir );
+
+// 현재 디렉토리 스트링을 얻어낸다.
+extern char *get_cwd_str( CWDStt *pCWD, char *pRetStr );
+
+// 현재 디렉토리 구조체의 주소를 얻는다.
+extern CWDStt *get_cwd();
+
+// 현재 디렉토리 스트링을 구한다.
+extern char *get_current_directory( char *pStr );
+
+// close cwd
+int	close_cwd();
+
+#endif

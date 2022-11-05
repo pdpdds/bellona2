@@ -1,0 +1,6 @@
+# Microsoft Developer Studio Generated Dependency File, included by login.mak
+
+.\login.c : \
+	"..\..\h\common\etc.h"\
+	".\login.h"\
+	

@@ -1,0 +1,21 @@
+# Microsoft Developer Studio Generated Dependency File, included by clock.mak
+
+.\clkres.rc : \
+	".\res\clk_exit.ico"\
+	".\res\clk_min.ico"\
+	".\res\clock.ico"\
+	
+
+.\clock_main.c : \
+	"..\..\h\common\fileapi.h"\
+	"..\..\h\grx.h"\
+	"..\..\h\grxdef.h"\
+	".\clock.h"\
+	
+
+.\tri_tbl.c : \
+	"..\..\h\common\fileapi.h"\
+	"..\..\h\grx.h"\
+	"..\..\h\grxdef.h"\
+	".\clock.h"\
+	

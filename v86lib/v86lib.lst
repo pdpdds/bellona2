@@ -1,0 +1,172 @@
+Microsoft (R) Macro Assembler Version 6.14.8444		    05/09/03 18:40:07
+v86lib.asm						     Page 1 - 1
+
+
+ 0000				CODE                SEGMENT
+				                    ASSUME CS:CODE, DS:CODE
+
+				                    ORG 0H
+				;=========================================;
+ 0000 0000			G_wMagic            DW 0
+ 0002 0000			G_wFunc             DW 0
+ 0004 0000			G_wResult           DW 0
+ 0006 00000000			G_dwParam           DD 0
+				;=========================================;
+
+				                    ORG 100H
+				;-----------------------------------------;
+ 0100  E9 0217			START:              JMP     XXX
+ 0103 56 38 36 4C 49 42		LIB_MAGIC           DB      "V86LIB", 0
+       00
+ 010A 0000			FUNC_TBL			DW		0
+ 010C  0358 R								DW		OFFSET F_LINES_50
+ 010E  036F R								DW		OFFSET F_GET_VESA_INFO
+ 0110  0381 R								DW		OFFSET F_GET_MODE_INFO
+ 0112  038E R								DW		OFFSET F_SET_VESA_MODE
+ 0114  039B R								DW		OFFSET F_LINES_25
+ 0116 42 55 46 46		BUFF_START			DB		'BUFF'
+ 011A  0032 [			BUFF				DT	    50 DUP(0)
+        00000000000000000000
+       ]
+ 030E  000C [			                    DB      12 DUP(0)
+        00
+       ]
+				;-----------------------------------------;
+ 031A  0E			XXX:                PUSH    CS
+ 031B  1F			                    POP     DS
+ 031C  0E			                    PUSH    CS
+ 031D  07			                    POP     ES
+
+ 031E  81 3E 0000 R 1128	                    CMP     WORD PTR G_wMagic, 01128H
+ 0324  74 08			                    JE      CHK_PARAM
+ 0326  C7 06 0004 R 0001	                            MOV  G_wResult, 1    ; Invalid parameter magic id.
+ 032C  EB 26			                            JMP END_OF_SVC
+
+ 032E  C7 06 0004 R 0000	CHK_PARAM:          MOV     WORD PTR G_wResult,0 ; The default return value is zero.
+								    
+ 0334  BE 010A R							MOV     SI, OFFSET FUNC_TBL
+ 0337  8B 1E 0002 R							MOV     BX, G_wFunc
+ 033B  D1 E3								SHL		BX, 1
+ 033D  8B 38								MOV     DI, [BX+SI]
+ 033F  FF D7								CALL    DI					 ; Get the function address and call that.
+ 0341  3C 4F								CMP     AL, 4FH
+ 0343  74 08								JE      CHK_AH
+ 0345  C7 06 0004 R FFFF								MOV WORD PTR G_wResult, 0FFFFh	; Function not supported
+ 034B  EB 07										JMP END_OF_SVC
+ 034D  B1 08				CHK_AH:			MOV		CL, 8
+ 034F  D3 E8								SHR		AX, CL				 ; Shift the AH value to the AL register
+ 0351  A3 0004 R							MOV		G_wResult, AX		 ; The AL value 0 means success but others mean failure.
+
+ 0354  CD 51			END_OF_SVC:			INT     51H					 ; Return to the Flat Protected Mode
+
+ 0356  EB C2			                    JMP     XXX
+
+				;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 0358				F_LINES_50			PROC NEAR
+									
+ 0358  B8 1202								MOV     AX,1202H    
+ 035B  B3 30								MOV     BL,30H      
+ 035D  CD 10								INT     10H         
+									                    
+ 035F  B8 0003								MOV     AX,0003H    
+ 0362  CD 10								INT     10H         
+									                    
+ 0364  B8 1112								MOV     AX,1112H    
+ 0367  B3 00								MOV     BL,00       
+ 0369  CD 10								INT     10H 
+									
+ 036B  B8 004F								MOV     AX, 004FH        
+
+ 036E  C3								RETN
+ 036F				F_LINES_50			ENDP
+				;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 036F				F_GET_VESA_INFO	    PROC NEAR
+
+ 036F  BF 011A R							MOV     DI,OFFSET BUFF
+ 0372  C7 05 4256						    MOV     WORD PTR [DI],  4256H	; VB
+ 0376  C7 45 02 3245						    MOV     WORD PTR [DI+2],3245H	; E2			    
+ 037B  B8 4F00							    MOV     AX,4F00H				; VBE information
+ 037E  CD 10							    INT     10H
+
+ 0380  C3								RETN
+ 0381				F_GET_VESA_INFO     ENDP
+				;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 0381				F_GET_MODE_INFO		PROC NEAR
+
+ 0381  B8 4F01								MOV  AX,4F01H					; VBE Mode Information
+ 0384  8B 0E 0006 R							MOV  CX,WORD PTR G_dwParam
+ 0388  BF 011A R							MOV  DI,OFFSET BUFF
+ 038B  CD 10								INT  10H
+
+ 038D  C3								RETN
+ 038E				F_GET_MODE_INFO		ENDP
+				;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 038E				F_SET_VESA_MODE		PROC NEAR
+
+ 038E  B8 4F02								MOV  AX,4F02H					
+ 0391  8B 1E 0006 R							MOV  BX,WORD PTR G_dwParam
+ 0395  BF 0000								MOV  DI,0
+ 0398  CD 10								INT  10H
+
+ 039A  C3								RETN
+ 039B				F_SET_VESA_MODE		ENDP
+				;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 039B				F_LINES_25			PROC NEAR
+
+ 039B  B8 0002								MOV  AX,02H	  				
+ 039E  BB 0002								MOV  BX,2	  ; video mode
+ 03A1  BF 0000								MOV  DI,0
+ 03A4  CD 10								INT  10H
+									
+ 03A6  B8 004F								MOV  AX,004FH
+
+ 03A9  C3								RETN
+ 03AA				F_LINES_25			ENDP
+				;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+ 03AA				CODE                ENDS
+				                    END     START
+Microsoft (R) Macro Assembler Version 6.14.8444		    05/09/03 18:40:07
+v86lib.asm						     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+CODE . . . . . . . . . . . . . .	16 Bit	 03AA	  Para	  Private 
+
+
+Procedures,  parameters and locals:
+
+                N a m e                 Type     Value    Attr
+
+F_GET_MODE_INFO  . . . . . . . .	P Near	 0381	  CODE	Length= 000D Private
+F_GET_VESA_INFO  . . . . . . . .	P Near	 036F	  CODE	Length= 0012 Private
+F_LINES_25 . . . . . . . . . . .	P Near	 039B	  CODE	Length= 000F Private
+F_LINES_50 . . . . . . . . . . .	P Near	 0358	  CODE	Length= 0017 Private
+F_SET_VESA_MODE  . . . . . . . .	P Near	 038E	  CODE	Length= 000D Private
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+BUFF_START . . . . . . . . . . .	Byte	 0116	  CODE	
+BUFF . . . . . . . . . . . . . .	TWord	 011A	  CODE	
+CHK_AH . . . . . . . . . . . . .	L Near	 034D	  CODE	
+CHK_PARAM  . . . . . . . . . . .	L Near	 032E	  CODE	
+END_OF_SVC . . . . . . . . . . .	L Near	 0354	  CODE	
+FUNC_TBL . . . . . . . . . . . .	Word	 010A	  CODE	
+G_dwParam  . . . . . . . . . . .	DWord	 0006	  CODE	
+G_wFunc  . . . . . . . . . . . .	Word	 0002	  CODE	
+G_wMagic . . . . . . . . . . . .	Word	 0000	  CODE	
+G_wResult  . . . . . . . . . . .	Word	 0004	  CODE	
+LIB_MAGIC  . . . . . . . . . . .	Byte	 0103	  CODE	
+START  . . . . . . . . . . . . .	L Near	 0100	  CODE	
+XXX  . . . . . . . . . . . . . .	L Near	 031A	  CODE	
+
+	   0 Warnings
+	   0 Errors

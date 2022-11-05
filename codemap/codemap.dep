@@ -1,0 +1,15 @@
+# Microsoft Developer Studio Generated Dependency File, included by CodeMap.mak
+
+.\codemap.c : \
+	"..\mydbg2.h"\
+	"..\pefile.h"\
+	".\codemap.h"\
+	"c:\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	
+
+.\main.c : \
+	"..\mydbg2.h"\
+	"..\pefile.h"\
+	".\codemap.h"\
+	"c:\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	

@@ -1,0 +1,21 @@
+# Microsoft Developer Studio Generated Dependency File, included by tt.mak
+
+.\tetris.c : \
+	"..\..\h\common\fileapi.h"\
+	"..\..\h\common\funckey.h"\
+	"..\..\h\grx.h"\
+	"..\..\h\grxdef.h"\
+	".\tetris.h"\
+	
+
+.\tetris_main.c : \
+	"..\..\h\common\fileapi.h"\
+	"..\..\h\common\funckey.h"\
+	"..\..\h\grx.h"\
+	"..\..\h\grxdef.h"\
+	".\tetris.h"\
+	
+
+.\tt_b2os.rc : \
+	".\res\tetris.ico"\
+	

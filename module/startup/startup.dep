@@ -1,0 +1,8 @@
+# Microsoft Developer Studio Generated Dependency File, included by startup.mak
+
+.\startup.c : \
+	"..\..\h\common\env.h"\
+	"..\..\h\common\fileapi.h"\
+	"..\..\h\common\uarea.h"\
+	"..\..\ksignal.h"\
+	

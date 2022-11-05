@@ -1,0 +1,242 @@
+# Microsoft Developer Studio Generated Dependency File, included by bell_fs.mak
+
+.\bcache.c : \
+	"..\major.h"\
+	".\bcache.h"\
+	".\blkdev.h"\
+	".\digit.h"\
+	".\f16part.h"\
+	".\fat32.h"\
+	".\fdd35.h"\
+	".\fddfat12.h"\
+	".\file.h"\
+	".\hddpart.h"\
+	".\idehdd.h"\
+	".\ramdisk.h"\
+	".\stdinout.h"\
+	".\vfs.h"\
+	
+
+.\blkdev.c : \
+	"..\major.h"\
+	".\bcache.h"\
+	".\blkdev.h"\
+	".\digit.h"\
+	".\f16part.h"\
+	".\fat32.h"\
+	".\fdd35.h"\
+	".\fddfat12.h"\
+	".\file.h"\
+	".\hddpart.h"\
+	".\idehdd.h"\
+	".\ramdisk.h"\
+	".\stdinout.h"\
+	".\vfs.h"\
+	
+
+.\digit.c : \
+	"..\major.h"\
+	".\bcache.h"\
+	".\blkdev.h"\
+	".\digit.h"\
+	".\f16part.h"\
+	".\fat32.h"\
+	".\fdd35.h"\
+	".\fddfat12.h"\
+	".\file.h"\
+	".\hddpart.h"\
+	".\idehdd.h"\
+	".\ramdisk.h"\
+	".\stdinout.h"\
+	".\vfs.h"\
+	
+
+.\f16part.c : \
+	"..\major.h"\
+	".\bcache.h"\
+	".\blkdev.h"\
+	".\digit.h"\
+	".\f16part.h"\
+	".\fat32.h"\
+	".\fdd35.h"\
+	".\fddfat12.h"\
+	".\file.h"\
+	".\hddpart.h"\
+	".\idehdd.h"\
+	".\ramdisk.h"\
+	".\stdinout.h"\
+	".\vfs.h"\
+	
+
+.\fat32.c : \
+	"..\major.h"\
+	".\bcache.h"\
+	".\blkdev.h"\
+	".\digit.h"\
+	".\f16part.h"\
+	".\fat32.h"\
+	".\fdd35.h"\
+	".\fddfat12.h"\
+	".\file.h"\
+	".\hddpart.h"\
+	".\idehdd.h"\
+	".\ramdisk.h"\
+	".\stdinout.h"\
+	".\vfs.h"\
+	
+
+.\fdd35.c : \
+	"..\major.h"\
+	".\bcache.h"\
+	".\blkdev.h"\
+	".\digit.h"\
+	".\f16part.h"\
+	".\fat32.h"\
+	".\fdd35.h"\
+	".\fddfat12.h"\
+	".\file.h"\
+	".\hddpart.h"\
+	".\idehdd.h"\
+	".\ramdisk.h"\
+	".\stdinout.h"\
+	".\vfs.h"\
+	
+
+.\fddfat12.c : \
+	"..\major.h"\
+	".\bcache.h"\
+	".\blkdev.h"\
+	".\digit.h"\
+	".\f16part.h"\
+	".\fat32.h"\
+	".\fdd35.h"\
+	".\fddfat12.h"\
+	".\file.h"\
+	".\hddpart.h"\
+	".\idehdd.h"\
+	".\ramdisk.h"\
+	".\stdinout.h"\
+	".\vfs.h"\
+	
+
+.\file.c : \
+	"..\major.h"\
+	".\bcache.h"\
+	".\blkdev.h"\
+	".\digit.h"\
+	".\f16part.h"\
+	".\fat32.h"\
+	".\fdd35.h"\
+	".\fddfat12.h"\
+	".\file.h"\
+	".\hddpart.h"\
+	".\idehdd.h"\
+	".\ramdisk.h"\
+	".\stdinout.h"\
+	".\vfs.h"\
+	
+
+.\hddpart.c : \
+	"..\major.h"\
+	".\bcache.h"\
+	".\blkdev.h"\
+	".\digit.h"\
+	".\f16part.h"\
+	".\fat32.h"\
+	".\fdd35.h"\
+	".\fddfat12.h"\
+	".\file.h"\
+	".\hddpart.h"\
+	".\idehdd.h"\
+	".\ramdisk.h"\
+	".\stdinout.h"\
+	".\vfs.h"\
+	
+
+.\idehdd.c : \
+	"..\major.h"\
+	".\bcache.h"\
+	".\blkdev.h"\
+	".\digit.h"\
+	".\f16part.h"\
+	".\fat32.h"\
+	".\fdd35.h"\
+	".\fddfat12.h"\
+	".\file.h"\
+	".\hddpart.h"\
+	".\idehdd.h"\
+	".\ramdisk.h"\
+	".\stdinout.h"\
+	".\vfs.h"\
+	
+
+.\jcommand.c : \
+	"..\major.h"\
+	".\bcache.h"\
+	".\blkdev.h"\
+	".\digit.h"\
+	".\f16part.h"\
+	".\fat32.h"\
+	".\fdd35.h"\
+	".\fddfat12.h"\
+	".\file.h"\
+	".\hddpart.h"\
+	".\idehdd.h"\
+	".\jcommand.h"\
+	".\jshell.h"\
+	".\ramdisk.h"\
+	".\stdinout.h"\
+	".\vfs.h"\
+	".\wkeycode.h"\
+	
+
+.\ramdisk.c : \
+	"..\major.h"\
+	".\bcache.h"\
+	".\blkdev.h"\
+	".\digit.h"\
+	".\f16part.h"\
+	".\fat32.h"\
+	".\fdd35.h"\
+	".\fddfat12.h"\
+	".\file.h"\
+	".\hddpart.h"\
+	".\idehdd.h"\
+	".\ramdisk.h"\
+	".\stdinout.h"\
+	".\vfs.h"\
+	
+
+.\stdinout.c : \
+	"..\major.h"\
+	".\bcache.h"\
+	".\blkdev.h"\
+	".\digit.h"\
+	".\f16part.h"\
+	".\fat32.h"\
+	".\fdd35.h"\
+	".\fddfat12.h"\
+	".\file.h"\
+	".\hddpart.h"\
+	".\idehdd.h"\
+	".\ramdisk.h"\
+	".\stdinout.h"\
+	".\vfs.h"\
+	
+
+.\vfs.c : \
+	"..\major.h"\
+	".\bcache.h"\
+	".\blkdev.h"\
+	".\digit.h"\
+	".\f16part.h"\
+	".\fat32.h"\
+	".\fdd35.h"\
+	".\fddfat12.h"\
+	".\file.h"\
+	".\hddpart.h"\
+	".\idehdd.h"\
+	".\ramdisk.h"\
+	".\stdinout.h"\
+	".\vfs.h"\
+	
