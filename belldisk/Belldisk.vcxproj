@@ -19,12 +19,12 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <UseOfMfc>false</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <UseOfMfc>false</UseOfMfc>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -66,7 +66,7 @@
       <StructMemberAlignment>1Byte</StructMemberAlignment>
     </ClCompile>
     <PostBuildEvent>
-      <Command>copy release\belldisk.exe \oh\os\bellona2\disk</Command>
+      <Command>copy release\belldisk.exe ..\disk</Command>
     </PostBuildEvent>
     <Midl>
       <TypeLibraryName>.\Release\Belldisk.tlb</TypeLibraryName>
@@ -121,6 +121,9 @@
       <OutputFile>.\Debug\Belldisk.exe</OutputFile>
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>copy debug\belldisk.exe ..\disk</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="belldisk.c" />
