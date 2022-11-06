@@ -85,7 +85,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>
       <FunctionLevelLinking>false</FunctionLevelLinking>
       <Optimization>Disabled</Optimization>
@@ -93,7 +93,7 @@
       <WarningLevel>Level3</WarningLevel>
       <StringPooling>true</StringPooling>
       <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
-      <AdditionalIncludeDirectories>..\..;..\..\h;..\..\h\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..;..\..\h;..\..\h\common</AdditionalIncludeDirectories>
       <UndefineAllPreprocessorDefinitions>true</UndefineAllPreprocessorDefinitions>
       <AssemblerOutput>All</AssemblerOutput>
       <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>
@@ -101,6 +101,8 @@
       <ObjectFileName>.\Debug\</ObjectFileName>
       <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
       <StructMemberAlignment>1Byte</StructMemberAlignment>
+      <SDLCheck>false</SDLCheck>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
     </ClCompile>
     <PostBuildEvent>
       <Command>copy ..\startup\debug\*.cod debug\startup /y
@@ -123,8 +125,12 @@ copy debug\*.exe ..\..\disk</Command>
       <SubSystem>Console</SubSystem>
       <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
       <OutputFile>.\Debug\wall.exe</OutputFile>
-      <AdditionalOptions> /FIXED:NO</AdditionalOptions>
+      <AdditionalOptions> /FIXED:NO /LARGEADDRESSAWARE</AdditionalOptions>
       <BaseAddress>0x80000000</BaseAddress>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
