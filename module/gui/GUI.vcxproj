@@ -115,7 +115,7 @@
     <PostBuildEvent>
       <Command>copy debug\gui.mod debug\gui.exe
 
-..\..\codemap\codemap debug\gui.map debug\gui.mod
+..\..\disk\codemap debug\gui.map debug\gui.mod
 
 copy debug\gui.mod ..\..\disk\gui.mod /y
 
