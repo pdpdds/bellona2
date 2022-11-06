@@ -127,7 +127,7 @@ static int page_fault( DWORD dwLinAddr, DWORD dwEIP, DWORD dwErrCode )
 	_asm {
 		MOV EAX, dwCR3
 		MOV CR3, EAX
-		FLUSH_TLB
+		FLUSH_TLB2(dwCR3)
 	}
 
 	// 사용자 영역의 RDOnly 매핑에 대한 폴트인가?

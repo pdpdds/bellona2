@@ -5,7 +5,8 @@
 #define PAGE_FAULT_W	2
 #define PAGE_FAULT_U	4
 
-#define FLUSH_TLB _asm int 0x53;
+//#define FLUSH_TLB _asm int 0x53;
+#define FLUSH_TLB2(addr) _asm invlpg addr
 
 // Page Directory 비트값.  PS,  0, A, PCD,     PWT, U, W, P
 #define PD_BIT_PS	0x80	// 페이지 사이즈 ( 0 = 4K, 1= 4M )

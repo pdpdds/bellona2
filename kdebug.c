@@ -556,7 +556,7 @@ DWORD kdbg_change_CR3()
 	_asm {
 		MOV EAX, dwNewCR3;
 		MOV CR3, EAX
-		FLUSH_TLB
+		FLUSH_TLB2(dwNewCR3)
 	}
 	return( dwNewCR3 );
 }
@@ -612,7 +612,7 @@ static int get_dword_in_other_context( DWORD dwCR3, DWORD dwAddr, DWORD *pResult
 
 		// CR3를 보관한다.
 		MOV  CR3,   EBX
-		FLUSH_TLB
+		FLUSH_TLB2(dwCR3)
 
 		// 값을 읽어서 pResult에 저장한다.
 		MOV  EAX,  [ECX]

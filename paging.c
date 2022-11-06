@@ -882,7 +882,7 @@ int copy_on_write( DWORD *pPD, DWORD dwAddr )
 		MOV dwOrgCR3, EAX
 		MOV EAX, pPD
 		MOV CR3, EAX
-		FLUSH_TLB
+		FLUSH_TLB2(pPD)
 
 		PUSHFD////////////////////////////////////////////////////////////
 		CLD							// memcpy 대신 사용.
@@ -900,7 +900,7 @@ int copy_on_write( DWORD *pPD, DWORD dwAddr )
 	_asm {
 		MOV EAX, dwOrgCR3
 		MOV CR3, EAX
-		FLUSH_TLB
+		FLUSH_TLB2(dwOrgCR3)
 	}
 
 

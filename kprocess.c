@@ -207,7 +207,7 @@ static DWORD reserve_thread_stack( ProcessStt *t_pProc, ThreadStt *t_pThread, DW
 		MOV dwOrgCR3, EAX
 		MOV EAX, dwCR3
 		MOV CR3, EAX
-		FLUSH_TLB
+		FLUSH_TLB2(dwCR3)
 	}
 
 	dwESP = 0;
@@ -256,7 +256,7 @@ END_RSV_PSTACK:
 	_asm {
 		MOV EAX, dwOrgCR3
 		MOV CR3, EAX
-		FLUSH_TLB
+		FLUSH_TLB2(dwOrgCR3)
 	}
 
 	// enable interrupt, return( dwESP )
@@ -1295,7 +1295,7 @@ int kernel_fork( THREAD_ENTRY_FUNC t_pThreadEntry, DWORD t_dwParam, DWORD t_dwSt
 		MOV dwOrgCR3,	EAX
 		MOV EAX,		dwCR3
 		MOV CR3,		EAX
-		FLUSH_TLB
+		FLUSH_TLB2(dwCR3)
 	}
 
 	// Owner Process, StackSize, Entry Function, Parameter
@@ -1310,7 +1310,7 @@ int kernel_fork( THREAD_ENTRY_FUNC t_pThreadEntry, DWORD t_dwParam, DWORD t_dwSt
 	_asm {
 		MOV EAX, dwOrgCR3
 		MOV CR3, EAX
-		FLUSH_TLB
+		FLUSH_TLB2(dwOrgCR3)
 		MOV ESP, dwOrgESP
 		POPFD
 	}
@@ -1323,7 +1323,7 @@ ERR:
 	_asm {
 		MOV EAX, dwOrgCR3
 		MOV CR3, EAX
-		FLUSH_TLB
+		FLUSH_TLB2(dwOrgCR3)
 		MOV ESP, dwOrgESP
 		POPFD
 	}
@@ -1479,7 +1479,7 @@ NEW_ENTRY:
 		MOV dwOrgCR3,	EAX
 		MOV EAX,		dwCR3
 		MOV CR3,		EAX
-		FLUSH_TLB;		// 2003-09-03
+		FLUSH_TLB2(dwCR3);		// 2003-09-03
 	}
 
 	// 쓰레드를 생성하여 복제한다.
@@ -1490,7 +1490,7 @@ NEW_ENTRY:
 	_asm {
 		MOV EAX, dwOrgCR3
 		MOV CR3, EAX
-		FLUSH_TLB;
+		FLUSH_TLB2(dwOrgCR3);
 	}
 	///////////////////////////////////////////////////////////////////////////////
 
