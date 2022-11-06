@@ -53,6 +53,7 @@ dkms.conf
 
 .vs
 Debug
+Release
 disk
 cod
 lib

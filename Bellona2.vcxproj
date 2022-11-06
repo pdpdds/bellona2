@@ -19,7 +19,7 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <UseOfMfc>false</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -139,7 +139,7 @@ copy debug\bellona2-r.bin disk</Command>
       <WarningLevel>Level3</WarningLevel>
       <AdditionalOptions> /vmg</AdditionalOptions>
       <StringPooling>true</StringPooling>
-      <AdditionalIncludeDirectories>.\;.\h;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;.\h;./h/common</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>BELLONA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerOutput>AssemblyAndMachineCode</AssemblerOutput>
       <AssemblerListingLocation>.\Release\</AssemblerListingLocation>
@@ -147,6 +147,7 @@ copy debug\bellona2-r.bin disk</Command>
       <ObjectFileName>.\Release\</ObjectFileName>
       <ProgramDataBaseFileName>.\Release\</ProgramDataBaseFileName>
       <StructMemberAlignment>1Byte</StructMemberAlignment>
+      <DisableSpecificWarnings>4091</DisableSpecificWarnings>
     </ClCompile>
     <Midl>
       <TypeLibraryName>.\Release\Bellona2.tlb</TypeLibraryName>
