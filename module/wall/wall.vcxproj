@@ -91,7 +91,7 @@
       <Optimization>Disabled</Optimization>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <WarningLevel>Level3</WarningLevel>
-      <StringPooling>true</StringPooling>
+      <StringPooling>false</StringPooling>
       <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
       <AdditionalIncludeDirectories>..\..;..\..\h;..\..\h\common</AdditionalIncludeDirectories>
       <UndefineAllPreprocessorDefinitions>true</UndefineAllPreprocessorDefinitions>
@@ -103,6 +103,8 @@
       <StructMemberAlignment>1Byte</StructMemberAlignment>
       <SDLCheck>false</SDLCheck>
       <BufferSecurityCheck>false</BufferSecurityCheck>
+      <PreprocessorDefinitions />
+      <ExceptionHandling>false</ExceptionHandling>
     </ClCompile>
     <PostBuildEvent>
       <Command>copy ..\startup\debug\*.cod debug\startup /y
@@ -125,12 +127,13 @@ copy debug\*.exe ..\..\disk</Command>
       <SubSystem>Console</SubSystem>
       <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
       <OutputFile>.\Debug\wall.exe</OutputFile>
-      <AdditionalOptions> /FIXED:NO /LARGEADDRESSAWARE</AdditionalOptions>
+      <AdditionalOptions> /FIXED:NO /LARGEADDRESSAWARE /FILEALIGN:4096</AdditionalOptions>
       <BaseAddress>0x80000000</BaseAddress>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <SectionAlignment>4096</SectionAlignment>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
