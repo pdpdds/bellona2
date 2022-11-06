@@ -8,7 +8,7 @@ typedef struct SysColorEntTag {
 	UINT16		wColor;
 } SysColorEntStt;
 
-extern GUI_EXPORT UINT16 get_sys_color( int nIndex );
+extern BELL_EXPORT UINT16 get_sys_color( int nIndex );
 
 #endif
 

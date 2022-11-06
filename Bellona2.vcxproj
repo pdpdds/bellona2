@@ -81,7 +81,7 @@
 
 copy debug\*.map cod /y 
 
-copy debug\bellona2.lib disk
+copy debug\bellona2.lib lib
 
 copy debug\bellona2.org debug\bellona2-d.bin
 

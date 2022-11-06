@@ -107,7 +107,8 @@
       <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
       <StructMemberAlignment>1Byte</StructMemberAlignment>
       <SDLCheck>false</SDLCheck>
-      <PreprocessorDefinitions>DLLEXPORT</PreprocessorDefinitions>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
       <DisableSpecificWarnings>4091</DisableSpecificWarnings>
       <BufferSecurityCheck>false</BufferSecurityCheck>
     </ClCompile>

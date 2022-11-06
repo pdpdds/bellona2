@@ -74,7 +74,7 @@ typedef struct {
 	unsigned short int ustr[1];
 } UniStrStt;	// UnicodeString
 
-extern GUI_EXPORT int win_resource	( unsigned long dwModule, WinResStt *pWR );
+extern BELL_EXPORT int win_resource	( unsigned long dwModule, WinResStt *pWR );
 
 extern ResObjStt 		*kalloc_res_obj					( DWORD dwType );
 

@@ -72,8 +72,8 @@ typedef struct {
 } GuiStt;
 
 //extern BELL_EXPORT int change_screen_res( VESAModeStt *pVM );
-extern GUI_EXPORT int enter_gui( VESAModeStt *pVM );
-extern GUI_EXPORT int leave_gui();
+extern BELL_EXPORT int enter_gui( VESAModeStt *pVM );
+extern BELL_EXPORT int leave_gui();
 
 extern GuiStt			*get_gui_stt				();
 extern WinResStt		*get_winres_stt				();
