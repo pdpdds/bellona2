@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CodeMap", "CodeMap.vcxproj", "{BDA1EB33-EA95-4E09-998B-69EF88821E4A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BDA1EB33-EA95-4E09-998B-69EF88821E4A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BDA1EB33-EA95-4E09-998B-69EF88821E4A}.Debug|Win32.Build.0 = Debug|Win32
+		{BDA1EB33-EA95-4E09-998B-69EF88821E4A}.Release|Win32.ActiveCfg = Release|Win32
+		{BDA1EB33-EA95-4E09-998B-69EF88821E4A}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {99CB7245-69A3-4E1F-96B9-A21703509458}
+	EndGlobalSection
+EndGlobal

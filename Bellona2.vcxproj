@@ -87,7 +87,7 @@ copy debug\bellona2.org debug\bellona2-d.bin
 
 copy debug\bellona2.org debug\bellona2-r.bin
 
-codemap\codemap debug\bellona2.map debug\bellona2-d.bin
+disk\codemap debug\bellona2.map debug\bellona2-d.bin
 
 stubv86\release\stubv86 debug\bellona2-d.bin v86lib\v86lib.bin
 
