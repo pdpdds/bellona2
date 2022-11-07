@@ -39,6 +39,9 @@ jobs:
         copy missing/wall.bmp disk
         copy missing/jpeg.mod disk
         copy missing/hdd.img disk
+        copy missing/qemu-img.exe disk
+        copy missing/libssp-0.dll disk
+        copy missing/libzstd-1.dll disk
         copy bload/bload.com disk
         copy bootsect/boot.bin disk
         
@@ -93,6 +96,7 @@ jobs:
         copy bellona2-d.bin bellona2.bin
         ./belldisk.exe
         ./imagetool.exe gui.mod guiapp.mod jpeg.mod login.exe stdlib.mod wall.exe
+        ./qemu-img.exe convert -O vmdk hdd.img hdd.vmdk
       
     - name: Upload a Build Artifact(bellona2)
       uses: actions/upload-artifact@v2.1.4
