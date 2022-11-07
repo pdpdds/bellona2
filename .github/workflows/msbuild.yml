@@ -43,7 +43,7 @@ jobs:
       working-directory: ${{env.GITHUB_WORKSPACE}}codemap
       # Add additional options to the MSBuild command line here (like platform or verbosity level).
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
-      run: msbuild codemap.sln /t:Build /p:Configuration=Debug /p:Platform=x86
+      run: msbuild codemap.sln /t:Build /p:Configuration=Debug /p:Platform=Win32
       
     - name: belldisk
       working-directory: ${{env.GITHUB_WORKSPACE}}belldisk
