@@ -38,8 +38,10 @@ jobs:
         copy missing/jpeg.lib lib
         copy missing/wall.bmp disk
         copy missing/jpeg.mod disk
+        copy missing/hdd.img disk
         copy bload/bload.com disk
         copy bootsect/boot.bin disk
+        
 
     - name: codemap
       working-directory: ${{env.GITHUB_WORKSPACE}}codemap      
@@ -56,6 +58,10 @@ jobs:
     - name: bell_fs
       working-directory: ${{env.GITHUB_WORKSPACE}}bell_fs      
       run: msbuild bell_fs.sln /t:Build /p:Configuration=Debug /p:Platform=Win32 
+      
+    - name: imagetool
+      working-directory: ${{env.GITHUB_WORKSPACE}}imagetool
+      run: msbuild imagetool.sln /t:Build /p:Configuration=Debug /p:Platform=x86
       
     - name: bellona2
       working-directory: ${{env.GITHUB_WORKSPACE}}kernel
@@ -86,6 +92,7 @@ jobs:
         cd disk        
         copy bellona2-d.bin bellona2.bin
         ./belldisk.exe
+        ./imagetool.exe gui.mod guiapp.mod jpeg.mod login.exe stdlib.mod wall.exe
       
     - name: Upload a Build Artifact(bellona2)
       uses: actions/upload-artifact@v2.1.4
