@@ -63,15 +63,15 @@ jobs:
 
     - name: stdlib
       working-directory: ${{env.GITHUB_WORKSPACE}}module/stdlib      
-      run: msbuild stdlib.sln /t:Build /p:Configuration=Debug /p:Platform=Win32 
+      run: msbuild stdlib.sln /t:Build /p:Configuration=Debug /p:Platform=x86 
 
     - name: gui
       working-directory: ${{env.GITHUB_WORKSPACE}}module/gui      
-      run: msbuild gui.sln /t:Build /p:Configuration=Debug /p:Platform=Win32 
+      run: msbuild gui.sln /t:Build /p:Configuration=Debug /p:Platform=x86  
       
     - name: guiapp
       working-directory: ${{env.GITHUB_WORKSPACE}}module/guiapp      
-      run: msbuild guiapp.sln /t:Build /p:Configuration=Debug /p:Platform=Win32 
+      run: msbuild guiapp.sln /t:Build /p:Configuration=Debug /p:Platform=x86  
       
     - name: login
       working-directory: ${{env.GITHUB_WORKSPACE}}module/login      
