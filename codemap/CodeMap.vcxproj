@@ -116,7 +116,7 @@
       <Culture>0x0412</Culture>
     </ResourceCompile>
     <PreLinkEvent>
-      <Command>del  ..\debug\bellona2.dbg</Command>
+      <Command>IF EXIST "..\debug\bellona2.dbg"  del  ..\debug\bellona2.dbg</Command>
     </PreLinkEvent>
     <Link>
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;imagehlp.lib;%(AdditionalDependencies)</AdditionalDependencies>
