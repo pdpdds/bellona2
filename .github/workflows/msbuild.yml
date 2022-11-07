@@ -85,7 +85,7 @@ jobs:
       run: |      
         cd disk        
         copy bellona2-d.bin bellona2.bin
-        belldisk
+        ./belldisk.exe
       
     - name: Upload a Build Artifact(bellona2)
       uses: actions/upload-artifact@v2.1.4
