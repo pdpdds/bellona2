@@ -27,7 +27,8 @@ jobs:
 
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
-      
+      with:
+        msbuild-architecture: x86
         
     - name: MKDIR
       run: |
@@ -94,8 +95,7 @@ jobs:
         cd disk        
         copy bellona2-d.bin bellona2.bin
         ./belldisk.exe
-        ./imagetool.exe gui.mod guiapp.mod jpeg.mod login.exe stdlib.mod wall.exe
-        ./qemu-img.exe convert -O vmdk ./hdd.img ./hdd.vmdk
+        ./imagetool.exe gui.mod guiapp.mod jpeg.mod login.exe stdlib.mod wall.exe       
       
     - name: Upload a Build Artifact(bellona2)
       uses: actions/upload-artifact@v2.1.4
