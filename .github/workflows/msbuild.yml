@@ -52,13 +52,13 @@ jobs:
       run: msbuild belldisk.sln /t:Build /p:Configuration=Debug /p:Platform=x86
       
     - name: stubv86
-      working-directory: ${{env.GITHUB_WORKSPACE}}belldisk
+      working-directory: ${{env.GITHUB_WORKSPACE}}stubv86
       # Add additional options to the MSBuild command line here (like platform or verbosity level).
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
       run: msbuild stubv86.sln /t:Build /p:Configuration=Debug /p:Platform=x86
       
     - name: bell_fs
-      working-directory: ${{env.GITHUB_WORKSPACE}}belldisk
+      working-directory: ${{env.GITHUB_WORKSPACE}}bell_fs
       # Add additional options to the MSBuild command line here (like platform or verbosity level).
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
       run: msbuild bell_fs.sln /t:Build /p:Configuration=Debug /p:Platform=x86  
