@@ -57,6 +57,10 @@ jobs:
       working-directory: ${{env.GITHUB_WORKSPACE}}bell_fs      
       run: msbuild bell_fs.sln /t:Build /p:Configuration=Debug /p:Platform=Win32 
       
+    - name: bellona2
+      working-directory: ${{env.GITHUB_WORKSPACE}}kernel
+      run: msbuild bellona2.sln /t:Build /p:Configuration=Debug /p:Platform=x86   
+      
     - name: startup
       working-directory: ${{env.GITHUB_WORKSPACE}}module/startup      
       run: msbuild startup.sln /t:Build /p:Configuration=Debug /p:Platform=Win32 
