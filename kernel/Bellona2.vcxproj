@@ -60,7 +60,7 @@
       <WarningLevel>Level3</WarningLevel>
       <StringPooling>false</StringPooling>
       <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
-      <AdditionalIncludeDirectories>.\;.\h;./h/common</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\;.\;..\h;../h/common</AdditionalIncludeDirectories>
       <UndefineAllPreprocessorDefinitions>true</UndefineAllPreprocessorDefinitions>
       <PreprocessorDefinitions>BELLONA2</PreprocessorDefinitions>
       <AssemblerOutput>All</AssemblerOutput>
@@ -77,25 +77,25 @@
       <BufferSecurityCheck>false</BufferSecurityCheck>
     </ClCompile>
     <PostBuildEvent>
-      <Command>copy debug\*.cod cod /y
+      <Command>copy debug\*.cod ..\cod /y
 
-copy debug\*.map cod /y 
+copy debug\*.map ..\cod /y 
 
-copy debug\bellona2.lib lib
+copy debug\bellona2.lib ..\lib
 
 copy debug\bellona2.org debug\bellona2-d.bin
 
 copy debug\bellona2.org debug\bellona2-r.bin
 
-disk\codemap debug\bellona2.map debug\bellona2-d.bin
+..\disk\codemap debug\bellona2.map debug\bellona2-d.bin
 
-stubv86\release\stubv86 debug\bellona2-d.bin v86lib\v86lib.bin
+..\stubv86\release\stubv86 debug\bellona2-d.bin ..\v86lib\v86lib.bin
 
-stubv86\release\stubv86 debug\bellona2-r.bin v86lib\v86lib.bin
+..\stubv86\release\stubv86 debug\bellona2-r.bin ..\v86lib\v86lib.bin
 
-copy debug\bellona2-d.bin disk
+copy debug\bellona2-d.bin ..\disk
 
-copy debug\bellona2-r.bin disk</Command>
+copy debug\bellona2-r.bin ..\disk</Command>
     </PostBuildEvent>
     <Midl>
       <TypeLibraryName>.\Debug\Bellona2.tlb</TypeLibraryName>
@@ -125,7 +125,7 @@ copy debug\bellona2-r.bin disk</Command>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <SectionAlignment>4096</SectionAlignment>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
-      <AdditionalLibraryDirectories>./lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../lib</AdditionalLibraryDirectories>
       <DataExecutionPrevention>false</DataExecutionPrevention>
     </Link>
   </ItemDefinitionGroup>
@@ -321,11 +321,11 @@ copy debug\bellona2-r.bin disk</Command>
     <ClInclude Include="Pefile.h" />
   </ItemGroup>
   <ItemGroup>
+    <MASM Include="..\bcmos\bcmos.asm" />
     <MASM Include="asm.asm">
       <FileType>Document</FileType>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </MASM>
-    <MASM Include="bcmos\bcmos.asm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

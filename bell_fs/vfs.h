@@ -32,7 +32,7 @@
 #include "file.h"
 #include "fdd35.h"
 #include "fat32.h"
-#include "../major.h"
+#include "../kernel/major.h"
 //#include "cache.h"
 #include "bcache.h"
 #include "idehdd.h"
@@ -56,7 +56,7 @@ extern int jprintf( char *lpFmt, ... );
 #endif//-----------------------------------------------------------------
 #ifdef  BELLONA2
 
-#include "..\util.h"
+#include "..\kernel\util.h"
 
 #define  ERROR_PRINTF	kdbg_printf
 #define  MALLOC			kmalloc
