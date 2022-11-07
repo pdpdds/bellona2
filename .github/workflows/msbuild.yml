@@ -75,7 +75,7 @@ jobs:
       
     - name: guiapp
       working-directory: ${{env.GITHUB_WORKSPACE}}module/guiapp      
-      run: msbuild guiapp.sln /t:Build /p:Configuration=Debug /p:Platform=x86  
+      run: msbuild guiapp.sln /t:Build /p:Configuration=Debug /p:Platform=Win32  
       
     - name: login
       working-directory: ${{env.GITHUB_WORKSPACE}}module/login      
