@@ -1,0 +1,64 @@
+name: MSBuild
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  # Path to the solution file relative to the root of the project.
+  SOLUTION_FILE_PATH: .
+
+  # Configuration type to build.
+  # You can convert this to a build matrix if you need coverage of multiple configuration types.
+  # https://docs.github.com/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
+  BUILD_CONFIGURATION: Release
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@v1.0.2
+      with:
+        msbuild-architecture: x86
+        
+    - name: MKDIR
+      run: |
+        mkdir lib
+        mkdir disk
+        mkdir cod
+        copy missing/jpeg.lib lib
+        copy missing/wall.bmp disk
+        copy missing/jpeg.mod disk
+
+    - name: codemap
+      working-directory: ${{env.GITHUB_WORKSPACE}}codemap
+      # Add additional options to the MSBuild command line here (like platform or verbosity level).
+      # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
+      run: msbuild codemap.sln /t:Build /p:Configuration=Debug /p:Platform=Win32
+      
+    - name: belldisk
+      working-directory: ${{env.GITHUB_WORKSPACE}}belldisk
+      # Add additional options to the MSBuild command line here (like platform or verbosity level).
+      # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
+      run: msbuild belldisk.sln /t:Build /p:Configuration=Debug /p:Platform=x86
+      
+    - name: stubv86
+      working-directory: ${{env.GITHUB_WORKSPACE}}belldisk
+      # Add additional options to the MSBuild command line here (like platform or verbosity level).
+      # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
+      run: msbuild stubv86.sln /t:Build /p:Configuration=Debug /p:Platform=x86
+      
+    - name: bell_fs
+      working-directory: ${{env.GITHUB_WORKSPACE}}belldisk
+      # Add additional options to the MSBuild command line here (like platform or verbosity level).
+      # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
+      run: msbuild bell_fs.sln /t:Build /p:Configuration=Debug /p:Platform=x86  
