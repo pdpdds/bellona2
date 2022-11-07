@@ -20,7 +20,7 @@
 */////////////////////////////////////////////////////////////////////////////////////////
 
 #include "codemap.h"
-#include "..\pefile.h"
+#include "..\kernel\pefile.h"
 
 static int init_codemap( CodeMapStt *pCM )
 {

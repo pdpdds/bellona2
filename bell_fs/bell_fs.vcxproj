@@ -51,7 +51,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\;..\h</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\kernel\;..\h</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>BELLONA2;BELL_FS</PreprocessorDefinitions>
       <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
       <StringPooling>true</StringPooling>

@@ -58,7 +58,7 @@
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..;..\gui;..\..\h;..\..\h\common</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\kernel;..\..;..\gui;..\..\h;..\..\h\common</AdditionalIncludeDirectories>
       <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
       <StringPooling>false</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>

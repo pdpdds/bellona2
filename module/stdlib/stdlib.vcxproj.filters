@@ -21,9 +21,6 @@
     <ClCompile Include="env.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\ffmt.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="fileapi.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -60,7 +57,10 @@
     <ClCompile Include="uarea.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\util.c">
+    <ClCompile Include="..\..\kernel\ffmt.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\kernel\util.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

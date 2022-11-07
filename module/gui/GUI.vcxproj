@@ -97,7 +97,7 @@
       <WarningLevel>Level3</WarningLevel>
       <StringPooling>false</StringPooling>
       <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
-      <AdditionalIncludeDirectories>..\..;..\..\h;..\..\h\common</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\kernel;..\..;..\..\h;..\..\h\common</AdditionalIncludeDirectories>
       <UndefineAllPreprocessorDefinitions>true</UndefineAllPreprocessorDefinitions>
       <AssemblerOutput>All</AssemblerOutput>
       <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>

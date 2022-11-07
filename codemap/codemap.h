@@ -8,8 +8,8 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 
-#include "..\pefile.h"
-#include "..\mydbg2.h"
+#include "..\kernel\pefile.h"
+#include "..\kernel\mydbg2.h"
 
 #define CM_PRINTF			printf
 #define CM_MALLOC			malloc
