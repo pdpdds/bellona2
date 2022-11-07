@@ -80,5 +80,11 @@ jobs:
     - name: login
       working-directory: ${{env.GITHUB_WORKSPACE}}module/login      
       run: msbuild login.sln /t:Build /p:Configuration=Debug /p:Platform=Win32 
+      
+    - name: Upload a Build Artifact(bellona2)
+      uses: actions/upload-artifact@v2.1.4
+      with:
+          name: bellona2
+          path: disk
 
 
