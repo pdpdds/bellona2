@@ -37,11 +37,7 @@ jobs:
         mkdir cod
         copy missing/jpeg.lib lib
         copy missing/wall.bmp disk
-        copy missing/jpeg.mod disk
-        copy missing/hdd.img disk
-        copy missing/qemu-img.exe disk
-        copy missing/libssp-0.dll disk
-        copy missing/libzstd-1.dll disk
+        copy missing/jpeg.mod disk        
         copy bload/bload.com disk
         copy bootsect/boot.bin disk
         
