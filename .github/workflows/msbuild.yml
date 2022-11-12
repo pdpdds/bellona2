@@ -91,7 +91,11 @@ jobs:
       
     - name: wall
       working-directory: ${{env.GITHUB_WORKSPACE}}module/wall      
-      run: msbuild wall.sln /t:Build /p:Configuration=Debug /p:Platform=Win32   
+      run: msbuild wall.sln /t:Build /p:Configuration=Debug /p:Platform=x86  
+      
+    - name: ush
+      working-directory: ${{env.GITHUB_WORKSPACE}}module/ush      
+      run: msbuild ush.sln /t:Build /p:Configuration=Debug /p:Platform=x86     
       
     - name: make_image
       run: |      
