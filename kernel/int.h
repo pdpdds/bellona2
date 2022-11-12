@@ -11,12 +11,13 @@ typedef struct IDTTag{
 };
 typedef struct IDTTag IDTStt;
 
-// IDTR의 구조.    GDTR과 동일.
+#pragma pack( push, 1 )
 typedef struct IDTRTag{
     UINT16 wSize;
     DWORD  dwAddr;
 };
 typedef struct IDTRTag IDTRStt;
+#pragma pack( pop )
 
 
 extern BELL_EXPORT void get_clk 		( __int64 *pClk );

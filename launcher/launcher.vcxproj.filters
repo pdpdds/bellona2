@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="asm">
+      <UniqueIdentifier>{bf8401db-7be2-48fc-8acc-7cdf43106023}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib">
+      <UniqueIdentifier>{59f131ad-febc-4b78-bc52-5352b7302e5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="arch">
+      <UniqueIdentifier>{b62a6572-a0e9-4c6e-9494-0ea63ccbb977}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cpu">
+      <UniqueIdentifier>{af16f82e-8842-4bf3-a2e3-571040b73351}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mm">
+      <UniqueIdentifier>{6392bccf-103d-4d80-af84-c80c7e2114a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib\include">
+      <UniqueIdentifier>{b93244c4-65c5-450f-aff8-0e093584f4a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="handler">
+      <UniqueIdentifier>{9179d718-03ba-4fe9-a618-c48babd48937}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="pe">
+      <UniqueIdentifier>{42e1d287-1fb9-49ac-9f67-f7a03ee555a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="log">
+      <UniqueIdentifier>{0de24bfa-b471-4396-850e-0ca029a98fd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="heap">
+      <UniqueIdentifier>{419b68e6-42a4-423a-b9fc-a0a3fb0d35d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="multiboot">
+      <UniqueIdentifier>{10fe8a8c-ae06-413d-8721-02ed9ef81136}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="entry">
+      <UniqueIdentifier>{8313071b-3d05-4f54-b3be-0547d4f09f32}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="asm\alldiv.c">
+      <Filter>asm</Filter>
+    </ClCompile>
+    <ClCompile Include="asm\allmul.c">
+      <Filter>asm</Filter>
+    </ClCompile>
+    <ClCompile Include="asm\allrem.c">
+      <Filter>asm</Filter>
+    </ClCompile>
+    <ClCompile Include="asm\allshr.c">
+      <Filter>asm</Filter>
+    </ClCompile>
+    <ClCompile Include="asm\aullshr.c">
+      <Filter>asm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>entry</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\atoi.c">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\ctype.c">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\rand.c">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\snprintf.c">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\string.c">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\vsnprintf.c">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\intrinsic.c">
+      <Filter>arch</Filter>
+    </ClCompile>
+    <ClCompile Include="src\x86arch.c">
+      <Filter>arch</Filter>
+    </ClCompile>
+    <ClCompile Include="src\fpu.cpp">
+      <Filter>cpu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gdt.cpp">
+      <Filter>cpu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\idt.cpp">
+      <Filter>cpu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PageDirectoryEntry.cpp">
+      <Filter>mm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PageTableEntry.cpp">
+      <Filter>mm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pmm.cpp">
+      <Filter>mm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vmm.cpp">
+      <Filter>mm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tss.cpp">
+      <Filter>cpu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PIT.cpp">
+      <Filter>cpu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pic.cpp">
+      <Filter>cpu</Filter>
+    </ClCompile>
+    <ClCompile Include="start.cpp">
+      <Filter>entry</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LoadDLL.cpp">
+      <Filter>pe</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BootConsole.cpp">
+      <Filter>log</Filter>
+    </ClCompile>
+    <ClCompile Include="src\malloc.c">
+      <Filter>heap</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MultibootUtil.cpp">
+      <Filter>multiboot</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cstd.c">
+      <Filter>arch</Filter>
+    </ClCompile>
+    <ClCompile Include="TrapHandler.cpp">
+      <Filter>handler</Filter>
+    </ClCompile>
+    <ClCompile Include="log.cpp">
+      <Filter>log</Filter>
+    </ClCompile>
+    <ClCompile Include="src\kernel64.cpp">
+      <Filter>entry</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PEUtil.cpp">
+      <Filter>pe</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Page.cpp">
+      <Filter>cpu</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="asm\aulldvrm.asm">
+      <Filter>asm</Filter>
+    </MASM>
+    <MASM Include="asm\chkstk.asm">
+      <Filter>asm</Filter>
+    </MASM>
+    <MASM Include="asm\lldvrm.asm">
+      <Filter>asm</Filter>
+    </MASM>
+    <MASM Include="asm\llshl.asm">
+      <Filter>asm</Filter>
+    </MASM>
+    <MASM Include="asm\ulldiv.asm">
+      <Filter>asm</Filter>
+    </MASM>
+    <MASM Include="asm\ullrem.asm">
+      <Filter>asm</Filter>
+    </MASM>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\ctype.h">
+      <Filter>lib\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\minwindef.h">
+      <Filter>lib\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\size_t.h">
+      <Filter>lib\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stdarg.h">
+      <Filter>lib\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stdint.h">
+      <Filter>lib\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stdio.h">
+      <Filter>lib\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stdlib.h">
+      <Filter>lib\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\string.h">
+      <Filter>lib\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\va_list.h">
+      <Filter>lib\include</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>entry</Filter>
+    </ClInclude>
+    <ClInclude Include="src\fpu.h">
+      <Filter>cpu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gdt.h">
+      <Filter>cpu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\idt.h">
+      <Filter>cpu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\pmm.h">
+      <Filter>mm</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PageTableEntry.h">
+      <Filter>mm</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PageDirectoryEntry.h">
+      <Filter>mm</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tss.h">
+      <Filter>cpu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\pic.h">
+      <Filter>cpu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PIT.h">
+      <Filter>cpu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vmm.h">
+      <Filter>mm</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Constants.h">
+      <Filter>entry</Filter>
+    </ClInclude>
+    <ClInclude Include="include\intrinsic.h">
+      <Filter>arch</Filter>
+    </ClInclude>
+    <ClInclude Include="start.h">
+      <Filter>entry</Filter>
+    </ClInclude>
+    <ClInclude Include="src\x86arch.h">
+      <Filter>arch</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LoadDLL.h">
+      <Filter>pe</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BootConsole.h">
+      <Filter>log</Filter>
+    </ClInclude>
+    <ClInclude Include="malloc.h">
+      <Filter>heap</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MultibootUtil.h">
+      <Filter>multiboot</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MultiBoot.h">
+      <Filter>multiboot</Filter>
+    </ClInclude>
+    <ClInclude Include="log.h">
+      <Filter>log</Filter>
+    </ClInclude>
+    <ClInclude Include="src\kernel64.h">
+      <Filter>entry</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PEUtil.h">
+      <Filter>pe</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PEImage.h">
+      <Filter>pe</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="_trap.s">
+      <Filter>handler</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ModeSwitch.asm">
+      <Filter>asm</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="asm\alldiv.c" />
+    <ClCompile Include="asm\allmul.c" />
+    <ClCompile Include="asm\allrem.c" />
+    <ClCompile Include="asm\allshr.c" />
+    <ClCompile Include="asm\aullshr.c" />
+    <ClCompile Include="lib\atoi.c" />
+    <ClCompile Include="lib\ctype.c" />
+    <ClCompile Include="lib\rand.c" />
+    <ClCompile Include="lib\snprintf.c" />
+    <ClCompile Include="lib\string.c" />
+    <ClCompile Include="lib\vsnprintf.c" />
+    <ClCompile Include="log.cpp" />
+    <ClCompile Include="src\BootConsole.cpp" />
+    <ClCompile Include="src\cstd.c" />
+    <ClCompile Include="src\fpu.cpp" />
+    <ClCompile Include="src\gdt.cpp" />
+    <ClCompile Include="src\idt.cpp" />
+    <ClCompile Include="src\intrinsic.c" />
+    <ClCompile Include="src\kernel64.cpp" />
+    <ClCompile Include="src\LoadDLL.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\malloc.c" />
+    <ClCompile Include="src\MultibootUtil.cpp" />
+    <ClCompile Include="src\Page.cpp" />
+    <ClCompile Include="src\PageDirectoryEntry.cpp" />
+    <ClCompile Include="src\PageTableEntry.cpp" />
+    <ClCompile Include="src\pic.cpp" />
+    <ClCompile Include="src\PIT.cpp" />
+    <ClCompile Include="src\pmm.cpp" />
+    <ClCompile Include="src\PEUtil.cpp" />
+    <ClCompile Include="src\tss.cpp" />
+    <ClCompile Include="src\vmm.cpp" />
+    <ClCompile Include="src\x86arch.c" />
+    <ClCompile Include="start.cpp" />
+    <ClCompile Include="TrapHandler.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="asm\aulldvrm.asm" />
+    <MASM Include="asm\chkstk.asm" />
+    <MASM Include="asm\lldvrm.asm" />
+    <MASM Include="asm\llshl.asm" />
+    <MASM Include="asm\ulldiv.asm" />
+    <MASM Include="asm\ullrem.asm" />
+    <CustomBuild Include="ModeSwitch.asm">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">nasmw -f win32 modeswitch.asm</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">modeswitch.obj</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\ctype.h" />
+    <ClInclude Include="include\intrinsic.h" />
+    <ClInclude Include="include\minwindef.h" />
+    <ClInclude Include="include\MultiBoot.h" />
+    <ClInclude Include="include\size_t.h" />
+    <ClInclude Include="include\stdarg.h" />
+    <ClInclude Include="include\stdint.h" />
+    <ClInclude Include="include\stdio.h" />
+    <ClInclude Include="include\stdlib.h" />
+    <ClInclude Include="include\string.h" />
+    <ClInclude Include="include\va_list.h" />
+    <ClInclude Include="log.h" />
+    <ClInclude Include="main.h" />
+    <ClInclude Include="malloc.h" />
+    <ClInclude Include="src\BootConsole.h" />
+    <ClInclude Include="src\Constants.h" />
+    <ClInclude Include="src\fpu.h" />
+    <ClInclude Include="src\gdt.h" />
+    <ClInclude Include="src\idt.h" />
+    <ClInclude Include="src\kernel64.h" />
+    <ClInclude Include="src\LoadDLL.h" />
+    <ClInclude Include="src\MultibootUtil.h" />
+    <ClInclude Include="src\PageDirectoryEntry.h" />
+    <ClInclude Include="src\PageTableEntry.h" />
+    <ClInclude Include="src\PEUtil.h" />
+    <ClInclude Include="src\PEImage.h" />
+    <ClInclude Include="src\pic.h" />
+    <ClInclude Include="src\PIT.h" />
+    <ClInclude Include="src\pmm.h" />
+    <ClInclude Include="src\tss.h" />
+    <ClInclude Include="src\vmm.h" />
+    <ClInclude Include="src\x86arch.h" />
+    <ClInclude Include="start.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="_trap.s">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)nasmw -f win32 _trap.s</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">_trap.obj</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{45073DE4-4775-4C80-BD74-01ACAD06507D}</ProjectGuid>
+    <RootNamespace>Kernel</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>launcher</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.21005.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)..\disk\</OutDir>
+    <IntDir>$(SolutionDir)\Intermediate\$(ProjectName)\</IntDir>
+    <ExtensionsToDeleteOnClean>*.exp *.obj%3b*.ilk%3b*.tlb%3b*.tli%3b*.tlh%3b*.tmp%3b*.rsp%3b*.pgc%3b*.pgd%3b$(TargetPath)</ExtensionsToDeleteOnClean>
+    <LinkIncremental>false</LinkIncremental>
+    <GenerateManifest>false</GenerateManifest>
+    <TargetName>$(ProjectName)</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <AdditionalIncludeDirectories>./src;./include;./</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_VA_LIST_DEFINED;SKYOS32;_MSC_VER=1920</PreprocessorDefinitions>
+      <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
+      <StringPooling>
+      </StringPooling>
+      <ExceptionHandling>false</ExceptionHandling>
+      <StructMemberAlignment>Default</StructMemberAlignment>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <AssemblerOutput />
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CallingConvention>Cdecl</CallingConvention>
+      <DisableSpecificWarnings>4505;4457;4189;4100;4702;4102;4244;4819;4201;</DisableSpecificWarnings>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <UndefineAllPreprocessorDefinitions>true</UndefineAllPreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <Link>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapFileName>$(SolutionDir)\bin\$(TargetName).map</MapFileName>
+      <SubSystem>Console</SubSystem>
+      <Driver>NotSet</Driver>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <FunctionOrder>
+      </FunctionOrder>
+      <EntryPointSymbol>start</EntryPointSymbol>
+      <NoEntryPoint>false</NoEntryPoint>
+      <BaseAddress>0x00100000</BaseAddress>
+      <FixedBaseAddress>
+      </FixedBaseAddress>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <FullProgramDatabaseFile>
+      </FullProgramDatabaseFile>
+      <ProgramDatabaseFile>$(SolutionDir)\bin\$(TargetName).pdb</ProgramDatabaseFile>
+      <LinkTimeCodeGeneration>
+      </LinkTimeCodeGeneration>
+      <AddModuleNamesToAssembly>
+      </AddModuleNamesToAssembly>
+      <ModuleDefinitionFile>
+      </ModuleDefinitionFile>
+      <AssemblyLinkResource>
+      </AssemblyLinkResource>
+      <SectionAlignment>1024</SectionAlignment>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+    <CustomBuildStep>
+      <Inputs>
+      </Inputs>
+    </CustomBuildStep>
+    <CustomBuild>
+      <Outputs>
+      </Outputs>
+    </CustomBuild>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <DisableSpecificWarnings>4457</DisableSpecificWarnings>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
+  </ImportGroup>
+</Project>

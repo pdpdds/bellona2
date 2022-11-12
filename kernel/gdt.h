@@ -1,18 +1,18 @@
 #ifndef BELLONA_GDT_HEADER
 #define BELLONA_GDT_HEADER
 
-#pragma pack(1)
-
 #include <types.h>
+
+#if defined(FLOPPY_BOOT)
 ////////////////////////////////////
 #define GSEL_CODE16				0x08
 #define GSEL_DATA16				0x10
 #define GSEL_STACK16			0x18
 #define GSEL_CODE32				0x20
 #define GSEL_DATA32				0x28
-#define GSEL_CALLGATE32			0x30
-#define GSEL_CODE32_R3			0x38
-#define GSEL_DATA32_R3			0x40
+#define GSEL_CODE32_R3			0x30
+#define GSEL_DATA32_R3			0x38
+#define GSEL_CALLGATE32			0x40
 #define GSEL_DBGTSS32			0x48
 #define GSEL_INITTSS32			0x50
 #define GSEL_DBG_TASK_GATE		0x58
@@ -24,11 +24,33 @@
 /////////////////////////////////////
 #define TOTAL_GSEL				(17)		// +1 means 0 descriptor
 /////////////////////////////////////
+#else 
+#define GSEL_CODE32				0x08
+#define GSEL_DATA32				0x10
+#define GSEL_CODE32_R3			0x18
+#define GSEL_DATA32_R3			0x20
+#define GSEL_CALLGATE32			0x28
+#define GSEL_DBGTSS32			0x30
+#define GSEL_INITTSS32			0x38
+#define GSEL_DBG_TASK_GATE		0x40
+#define GSEL_LDT				0x48
+#define GSEL_DUMMY_TSS32		0x50
+#define GSEL_DUMMY_V86TSS		0x58
+#define GSEL_PFTSS32            0x60
+#define GSEL_TLBTSS32			0x68
+/////////////////////////////////////
+#define TOTAL_GSEL				(14)		// +1 means 0 descriptor
+/////////////////////////////////////
+#endif
+
+
 #define ISEL_INT_1				(0x08 * 1)
 #define ISEL_INT_3				(0x08 * 3)
 #define ISEL_PF					(0x08 * 0x0E)
 #define ISEL_TLB				(0x08 * 0x53)
 /////////////////////////////////////
+
+#pragma pack(push, 1)
 
 typedef struct descriptorTag{
     UCHAR  size_0, size_1;
@@ -54,7 +76,7 @@ typedef struct GDTRTag{
 };
 typedef struct GDTRTag GDTRStt;
 
-#pragma pack()
+#pragma pack(pop)
 
 extern void   vClearGDTR   ( GDTRStt *pG );
 extern UINT16 wSetGDTRSize ( GDTRStt *pG, UINT16 wSize );

@@ -95,7 +95,9 @@ copy debug\bellona2.org debug\bellona2-r.bin
 
 copy debug\bellona2-d.bin ..\disk
 
-copy debug\bellona2-r.bin ..\disk</Command>
+copy debug\bellona2-r.bin ..\disk
+
+copy debug\bellona2-d.bin ..\disk\bellona2.bin</Command>
     </PostBuildEvent>
     <Midl>
       <TypeLibraryName>.\Debug\Bellona2.tlb</TypeLibraryName>
