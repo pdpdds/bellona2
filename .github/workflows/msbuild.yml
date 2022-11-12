@@ -95,7 +95,7 @@ jobs:
       
     - name: ush
       working-directory: ${{env.GITHUB_WORKSPACE}}module/ush      
-      run: msbuild ush.sln /t:Build /p:Configuration=Debug /p:Platform=x86     
+      run: msbuild ush.sln /t:Build /p:Configuration=Debug /p:Platform=Win32     
       
     - name: make_image
       run: |      
