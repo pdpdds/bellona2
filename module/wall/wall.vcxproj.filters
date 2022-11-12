@@ -21,8 +21,8 @@
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\..\lib\stdlib.lib" />
-    <Library Include="..\..\lib\jpeg.lib" />
     <Library Include="..\..\lib\startup.lib" />
     <Library Include="..\..\lib\guiapp.lib" />
+    <Library Include="..\..\lib\jpeg.lib" />
   </ItemGroup>
 </Project>
