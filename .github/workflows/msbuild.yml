@@ -33,7 +33,6 @@ jobs:
     - name: MKDIR
       run: |
         mkdir lib
-        mkdir disk
         mkdir cod
         copy missing/jpeg.lib lib
         copy missing/wall.bmp disk
@@ -90,7 +89,8 @@ jobs:
       run: |      
         cd disk        
         copy bellona2-d.bin bellona2.bin
-        ./belldisk.exe         
+        # ./belldisk.exe 
+        ./Multiboot.exe launcher.exe bellona2.bin guiapp.mod gui.mod stdlib.mod jpeg.mod wall.bmp login.exe
       
     - name: Upload a Build Artifact(bellona2)
       uses: actions/upload-artifact@v2.1.4
