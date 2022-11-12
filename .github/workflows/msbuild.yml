@@ -32,11 +32,7 @@ jobs:
         
     - name: MKDIR
       run: |
-        mkdir lib
-        mkdir cod
-        copy missing/jpeg.lib lib
-        copy missing/wall.bmp disk
-        copy missing/jpeg.mod disk        
+        mkdir cod      
         copy bload/bload.com disk
         copy bootsect/boot.bin disk
         
@@ -84,6 +80,18 @@ jobs:
     - name: login
       working-directory: ${{env.GITHUB_WORKSPACE}}module/login      
       run: msbuild login.sln /t:Build /p:Configuration=Debug /p:Platform=Win32 
+      
+    - name: tetris
+      working-directory: ${{env.GITHUB_WORKSPACE}}module/tt      
+      run: msbuild tt.sln /t:Build /p:Configuration=Debug /p:Platform=Win32  
+      
+    - name: clock
+      working-directory: ${{env.GITHUB_WORKSPACE}}module/clock      
+      run: msbuild clock.sln /t:Build /p:Configuration=Debug /p:Platform=Win32  
+      
+    - name: wall
+      working-directory: ${{env.GITHUB_WORKSPACE}}module/wall      
+      run: msbuild wall.sln /t:Build /p:Configuration=Debug /p:Platform=Win32   
       
     - name: make_image
       run: |      
