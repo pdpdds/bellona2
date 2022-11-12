@@ -8,6 +8,7 @@
 FILE* g_rawDisk = 0;
 FATFS g_fat32_system;
 
+char szImageName[MAX_PATH] = "hdd.img";
 bool InsertKernelToImageFile(int argc, char** argv);
 
 using namespace std;
@@ -140,7 +141,7 @@ int main(int argc, char** argv)
 		// Use Qemu
 		char command[0x200];
 		//snprintf(command, sizeof(command), "\"qemu-system-i386.exe\" -kernel \"%s\"", argv[1]);
-		snprintf(command, sizeof(command), "\"qemu-system-x86_64.exe\" -m 512 -hda kernel.img -M pc -boot c");
+		snprintf(command, sizeof(command), "\"qemu-system-x86_64.exe\" -m 512 -hda %s -M pc -boot c", szImageName);
 
 		CreateProcessAndWait((char*)command);
 	}
@@ -241,7 +242,7 @@ extern "C" BYTE IMG_disk_initialize()
 
 	char* cwd = _getcwd(buf, 256);
 
-	g_rawDisk = fopen("kernel.img", "rb+");
+	g_rawDisk = fopen(szImageName, "rb+");
 
 	if (g_rawDisk == 0)
 		return 1;

@@ -17,4 +17,4 @@ REM PCI-based PC(default): -M pc
 REM ISA-based PC         : -M isapc
 REM -M isapc is added for NE2000 ISA card.
 
-qemu-system-x86_64 -L . -m 512 -hda kernel.img -M pc -boot c
+qemu-system-x86_64 -L . -m 512 -hda hdd.img -M pc -boot c
