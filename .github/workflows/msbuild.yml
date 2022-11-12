@@ -89,8 +89,7 @@ jobs:
       run: |      
         cd disk        
         copy bellona2-d.bin bellona2.bin
-        # ./belldisk.exe 
-        ./Multiboot.exe launcher.exe bellona2.bin guiapp.mod gui.mod stdlib.mod jpeg.mod wall.bmp login.exe
+        ./belldisk.exe 
       
     - name: Upload a Build Artifact(bellona2)
       uses: actions/upload-artifact@v2.1.4
