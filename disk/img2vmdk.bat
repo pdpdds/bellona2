@@ -1,0 +1,1 @@
+imagetool bellona2.bin guiapp.mod gui.mod stdlib.mod jpeg.mod wall.jpg wall.bmp login.exe hello.exe calcstr.exe clock.exe tt.exe wall.exe ush.exe sigtest.exe qemu-img.exe convert -O vmdk hdd.img hdd.vmdk
