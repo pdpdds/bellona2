@@ -5,6 +5,9 @@
 
 [Bellona2 공식 홈페이지](http://www.bellona2.com)  
 
+
+[![Bellona2 실행영상](http://img.youtube.com/vi/kg66S-3ia74/0.jpg)](https://youtu.be/kg66S-3ia74)
+
 ## 빌드
 
 아래 링크의 문서를 참조한다.  
