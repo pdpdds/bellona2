@@ -133,7 +133,7 @@ copy debug\stdlib.lib ..\..\lib</Command>
       <SubSystem>Console</SubSystem>
       <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
       <OutputFile>Debug/stdlib.mod</OutputFile>
-      <AdditionalOptions> /FIXED:NO /FILEALIGN:4096</AdditionalOptions>
+      <AdditionalOptions> /FIXED:NO /FILEALIGN:4096 /LARGEADDRESSAWARE</AdditionalOptions>
       <EntryPointSymbol>stdlib_main</EntryPointSymbol>
       <AdditionalDependencies />
       <SectionAlignment>4096</SectionAlignment>
@@ -142,6 +142,8 @@ copy debug\stdlib.lib ..\..\lib</Command>
       <MapFileName>.\Debug/stdlib.map</MapFileName>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <BaseAddress>
+      </BaseAddress>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
