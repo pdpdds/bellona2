@@ -95,7 +95,19 @@ jobs:
       
     - name: ush
       working-directory: ${{env.GITHUB_WORKSPACE}}module/ush      
-      run: msbuild ush.sln /t:Build /p:Configuration=Debug /p:Platform=Win32     
+      run: msbuild ush.sln /t:Build /p:Configuration=Debug /p:Platform=Win32    
+    
+    - name: hello
+      working-directory: ${{env.GITHUB_WORKSPACE}}module/hello 
+      run: msbuild hello.sln /t:Build /p:Configuration=Debug /p:Platform=Win32   
+      
+    - name: sigtest
+      working-directory: ${{env.GITHUB_WORKSPACE}}module/sigtest 
+      run: msbuild sigtest.sln /t:Build /p:Configuration=Debug /p:Platform=Win32 
+      
+    - name: calcstr
+      working-directory: ${{env.GITHUB_WORKSPACE}}module/calcstr 
+      run: msbuild calcstr.sln /t:Build /p:Configuration=Debug /p:Platform=Win32   
       
     - name: make_image
       run: |      
