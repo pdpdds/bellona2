@@ -14,13 +14,22 @@
 전체 자동화 빌드 액션플로우는 액션탭에서 확인한다.
 
 ## 실행
-현재 VMWARE, VirtualBox 에뮬레이터에서 커널 실행이 가능하다.
+구동에 어려움이 있다면 이슈란에 글을 남겨 주세요.
 
+### GRUB 부팅
+* 윈도우즈용 QEMU 최신버전을 다운받고 설치한다. 전역경로에서 실행되는지 확인한다.
 * 액션탭에서 bellona2를 다운받아 압축을 푼다.
-* 릴리즈탭에서 hdd_image.rar를 다운받아 압축을 풀고 내용물을 bellona2 폴더에 복사한다.
+* 릴리즈탭에서 hdd_image.rar를 다운받아 압축을 풀고 내용물을 bellona2\disk 폴더에 복사한다.
+* kenel\bellona2.sln을 실행한 다음 시작 프로젝트를 Multiboot 프로젝트로 설정하고 실행한다.
+* 커널을 실행한 후 콘솔 입력창이 나오면 startg 111을 입력해서 GUI 모드를 가동한다.
+
+## 플로피 부팅
+현재 VMWARE, VirtualBox 에뮬레이터에서 커널 실행이 가능하다.
+* 액션탭에서 bellona2를 다운받아 압축을 푼다.
+* 릴리즈탭에서 hdd_image.rar를 다운받아 압축을 풀고 내용물을 bellona2\disk 폴더에 복사한다.
 * img2vmdk.bat 배치파일을 실행해서 VMWARE, VirtualBox용 FAT32 하드디스크 파일 hdd.vmdk를 생성한다.
-* Bellona2.img 파일은 플로피 디스크로 마운트하고 hdd.vmdk는 IDE 하드 디스크로 가상 머신에 마운트한다.
-* 가상머신으로 커널을 실행한 후 콘솔 입력창이 나오면 startg 111을 입력해서 GUI 모드를 가동한다.
+* 가상머신에서 Bellona2.img 파일은 플로피 디스크로 마운트하고 hdd.vmdk는 IDE 하드 디스크로 가상 머신에 마운트한다.
+* 커널을 실행한 후 콘솔 입력창이 나오면 startg 111을 입력해서 GUI 모드를 가동한다.
 
 ## WIP
 * 시그널 전파 안됨(sigtest.exe)
