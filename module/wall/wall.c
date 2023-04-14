@@ -22,28 +22,30 @@ int main( int argc, char *argv[] )
 
 	if( is_gui_mode() == 0 )
 	{
-		printf( "error: system is not in gui mode.\n" );
+		printf( "error: system is not in gui mode.\n");
 		return( -2 );
 	}
 
-	//if( argc <= 1 )
-	//{
-	//	printf( "usage: wall <wall_paper.jpg>\n" );
-	//	return( -1 );
-	//}
-
+	if( argc <= 1 )
+	{
+		printf( "usage: wall <wall_paper.jpg>\n" );
+		return( 0 );
+	}
+	
 	// 파일을 읽어들인다.
 	pFileName = argv[1];
-
-	pFileName = "/c/wall.jpg";
+	//pFileName = "/c/wall.jpg";
 
 	pB = load_file( pFileName, &nFileSize );
+
+	
 	if( pB == NULL )
 	{
 		printf( "load_file( %s ) failed!\n", pFileName );
 		return( -3 );
 	}
-
+	printf("load_file( %s ) success!\n", argv[1]);
+	
 	// 파일을 RGB로 번환한다.
 	pRGB = decode_jpeg( pB, nFileSize, &dwH, &dwV, &dwRGBBuffSize );
 	if( pRGB == NULL )

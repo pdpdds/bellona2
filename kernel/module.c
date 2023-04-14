@@ -339,8 +339,11 @@ ModuleStt *load_user_module( char *pFileName )
 	if( pM == NULL )
 		return( NULL );
 
+	
+
 	// 매핑된 페이지를 user level로 변경한다.
 	dwAddr = pM->dwLoadAddr;
+	kdbg_printf("user module load address 0x%x\n", dwAddr);
 	for( nI = 0; nI < pM->nTotalPage; nI++ )
 	{
 		change_mapping_to_user( dwAddr );
